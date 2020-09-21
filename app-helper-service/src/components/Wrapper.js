@@ -5,13 +5,14 @@ import Ukraine from '../core/lang/uk';
 import Russia from '../core/lang/ru';
 
 const Context = React.createContext();
-const local = navigator.language.slice(0,2);
+const local = navigator.language;
+
 let lang;
-if (local === 'ru') {
-    lang = Russia;
-} else {
-    if (local === 'uk') {
-        lang = Ukraine;
+if (local === 'uk') {
+    lang = Ukraine;
+}else {
+    if (local === 'ru') {
+        lang = Russia;
     } else {
         lang = English;
     }
@@ -22,11 +23,11 @@ const Wrapper = (props) => {
     function selectLanguage(e) {
         const newLocale = e.target.value;
         setLocale(newLocale);
-        if (newLocale === 'ru') {
-            setMessages(Russia);
+        if (newLocale === 'uk') {
+            setMessages(Ukraine);
         } else {
-            if (newLocale === 'ua'){
-                setMessages(Ukraine);
+            if (newLocale === 'ru'){
+                setMessages(Russia);
             } else {
                 setMessages(English);
             }
