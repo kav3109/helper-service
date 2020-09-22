@@ -1,3 +1,7 @@
 {
-  "app.header": "Welcome to Helper"
+  "app.header": "Welcome to Helper",
+  "app.start.title": "Choose your role",
+  "app.start.description": "Are you participant or owner of a quize?",
+  "app.start.button1": "Owner",
+  "app.start.button2": "Perticipant"
 }

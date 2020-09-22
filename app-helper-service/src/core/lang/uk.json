@@ -1,3 +1,7 @@
 {
-  "app.header": "Ласкаво просимо до Помічникa"
+  "app.header": "Вітаємо у Помічнику",
+  "app.start.title": "Оберіть вашу роль",
+  "app.start.description": "Ви учасник або власник опитування?",
+  "app.start.button1": "Засновник",
+  "app.start.button2": "Учасник"
 }

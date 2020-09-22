@@ -1,3 +1,7 @@
 {
-  "app.header": "Добро пожаловать в Помощник"
+  "app.header": "Приветствуем в Помощнике",
+  "app.start.title": "Выберите вашу роль",
+  "app.start.description": "Вы участник опроса или создатель?",
+  "app.start.button1": "Создатель",
+  "app.start.button2": "Участник"
 }

@@ -8,7 +8,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -19,15 +18,13 @@ code {
 .header {
   opacity: .9;
 }
-
+.header div {
+    padding: 1rem;
+}
 .content {
     width: 18rem;
     margin: auto;
-}
-
-.content .btn {
-    width: 50%;
-    margin: 5px 60px;
+    text-align: center;
 }
 .card-title, .card-text {
     animation: showText 2s
@@ -50,7 +47,6 @@ code {
     0% {transform: translate(-110%); opacity: 0}
     100% {transform: translate(0); opacity: 1}
 }
-
 @keyframes showBtnRight {
     0% {transform: translate(-310%);}
     90% {transform: translate(10%);}
@@ -61,19 +57,42 @@ code {
     90% {transform: translate(-10%);}
     100% {transform: translate(0);}
 }
-
 @media only screen and (max-width: 1280px) {
   body {
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: 200%;
+      background: url("./core/source/background-image.jpg") no-repeat top;
+      background-size: 200%;
   }
 }
-
 @media only screen and (max-width: 600px) {
   body {
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: 300%;
+    background-size: 400%;
   }
+}
+@media only screen and (max-width: 740px) {
+    .header div {
+        padding: 0;
+    }
+    h5 {
+        font-size: 1.1rem;
+        padding-top: 8px;
+    }
+    nav select {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+    .language {
+        font-size: .9rem;
+        width: 55px;
+    }
+}
+@media only screen and (max-width: 321px) {
+    h5 {
+        font-size: .9rem;
+        padding-top: 10px;
+    }
+    .language {
+        font-size: .7rem;
+        width: 55px;
+    }
 }

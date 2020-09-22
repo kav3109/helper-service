@@ -1,21 +1,36 @@
 import React, {useContext} from 'react';
-// import {FormattedMessage} from 'react-intl';
-// import {Context} from "./Wrapper";
+import {FormattedMessage} from 'react-intl';
 
 function Header(props) {
-
-    // const context = useContext(Context);
 
     return (
         <div className="content card">
             <div className="card-body">
-                <h5 className="card-title">Специальный заголовок</h5>
-                <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <button type="button" className="btn btn-primary right"><span className="btnText">Главный 1</span></button>
+                <h5 className="card-title">
+                    <FormattedMessage
+                        id = "app.start.title"
+                        defaultMessage="Choose your role"
+                    />
+                </h5>
+                <p className="card-text">
+                    <FormattedMessage
+                    id = "app.start.description"
+                    defaultMessage="Are you participant or owner of a quize?"
+                    />
+                </p>
+                <button type="button" className="btn btn-primary w-50 m-1 right"><span className="btnText">
+                    <FormattedMessage
+                    id = "app.start.button1"
+                    defaultMessage="Owner"
+                    />
+                </span></button>
                 <br/>
-                <button type="button" className="btn btn-primary left">Главный 2</button>
-                <br/>
-                <button type="button" className="btn btn-primary right">Главный 3</button>
+                <button type="button" className="btn btn-primary w-50 m-1 left">
+                    <FormattedMessage
+                        id = "app.start.button2"
+                        defaultMessage="Participant"
+                    />
+                </button>
             </div>
         </div>
     )
