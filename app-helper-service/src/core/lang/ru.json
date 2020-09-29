@@ -3,5 +3,8 @@
   "app.start.title": "Выберите вашу роль",
   "app.start.description": "Вы участник опроса или создатель?",
   "app.start.button1": "Создатель",
-  "app.start.button2": "Участник"
+  "app.start.button2": "Участник",
+  "app.owner.button1": "Создать опрос",
+  "app.owner.button2": "Создать тест",
+  "app.owner.button3": "Проверить"
 }
