@@ -22,7 +22,7 @@ code {
     padding: 1rem;
 }
 .content {
-    width: 18rem;
+    width: 22rem;
     margin: auto;
     text-align: center;
 }
@@ -37,6 +37,17 @@ code {
 }
 .left {
     animation: showBtnLeft 3s
+}
+.creater {
+    width: 75vw;
+    height: 85vh;
+    margin: auto;
+    text-align: center;
+    overflow: auto;
+}
+
+.type {
+    width: 30vw;
 }
 @keyframes showText {
     0% {transform: translateY(-110%); opacity: 0}
@@ -62,11 +73,21 @@ code {
       background: url("./core/source/background-image.jpg") no-repeat top;
       background-size: 200%;
   }
+    .type {
+        width: 50vw;
+    }
 }
 @media only screen and (max-width: 600px) {
   body {
     background-size: 400%;
   }
+    .creater {
+        width: 95vw;
+    }
+    .type {
+        width: 80vw;
+    }
+
 }
 @media only screen and (max-width: 740px) {
     .header div {

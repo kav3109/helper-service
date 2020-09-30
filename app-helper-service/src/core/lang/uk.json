@@ -1,10 +1,13 @@
 {
   "app.header": "Вітаємо у Помічнику",
   "app.start.title": "Оберіть вашу роль",
-  "app.start.description": "Ви учасник або власник опитування?",
+  "app.start.description": "Ви засновник або учасник опитування?",
   "app.start.button1": "Засновник",
   "app.start.button2": "Учасник",
   "app.owner.button1": "Створити опитування",
   "app.owner.button2": "Створити тест",
-  "app.owner.button3": "Перевірити"
+  "app.owner.button3": "Перевірити",
+  "app.creator.type": "Оберіть тип питання",
+  "app.creator.radio": "Одна правильна відповідь",
+  "app.creator.checkbox": "Декілька правильних відповідей"
 }

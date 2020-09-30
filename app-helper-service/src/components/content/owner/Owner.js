@@ -1,12 +1,11 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import { Link} from 'react-router-dom';
-import CreateSurvey from "./CreateSurvey";
 
 function Owner() {
 
     return (
-        <div className="content card w-50">
+        <div className="content card">
             <div className="card-body">
                 <Link to="/createSurvey" className="btn btn-primary w-50 m-1 right">
                     <FormattedMessage

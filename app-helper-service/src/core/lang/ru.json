@@ -6,5 +6,8 @@
   "app.start.button2": "Участник",
   "app.owner.button1": "Создать опрос",
   "app.owner.button2": "Создать тест",
-  "app.owner.button3": "Проверить"
+  "app.owner.button3": "Проверить",
+  "app.creator.type": "Выберете тип вопроса",
+  "app.creator.radio": "Один правильный ответ",
+  "app.creator.checkbox": "Несколько правильных ответов"
 }

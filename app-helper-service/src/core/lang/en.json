@@ -6,6 +6,8 @@
   "app.start.button2": "Perticipant",
   "app.owner.button1": "Create survey",
   "app.owner.button2": "Create test",
-  "app.owner.button3": "Check results"
-
+  "app.owner.button3": "Check results",
+  "app.creator.type": "Select question type",
+  "app.creator.radio": "Only one correct answer",
+  "app.creator.checkbox": "Several correct answers"
 }
