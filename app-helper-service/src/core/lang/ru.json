@@ -8,6 +8,12 @@
   "app.owner.button2": "Создать тест",
   "app.owner.button3": "Проверить",
   "app.creator.type": "Выберете тип вопроса",
-  "app.creator.radio": "Один правильный ответ",
-  "app.creator.checkbox": "Несколько правильных ответов"
+  "app.creator.survey.radio": "Один возможный ответ",
+  "app.creator.test.radio": "Один правильный вариант",
+  "app.creator.survey.checkbox": "Несколько возможных ответов",
+  "app.creator.test.checkbox": "Несколько правильных вариантов",
+  "app.creator.question": "Введите вопрос",
+  "app.creator.option": "Вариант ответа",
+  "app.creator.correct": "Правильный ответ"
+
 }

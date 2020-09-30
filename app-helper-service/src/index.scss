@@ -12,43 +12,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.language {
-  width: 60px;
-}
-.header {
-  opacity: .9;
-}
-.header div {
-    padding: 1rem;
-}
+.language {width: 60px;}
+.header {opacity: .9;}
+.header div {padding: 1rem;}
 .content {
     width: 22rem;
     margin: auto;
     text-align: center;
 }
-.card-title, .card-text {
-    animation: showText 2s
-}
-.btnText {
-    animation: showBtnText 3s
-}
-.right {
-    animation: showBtnRight 3s
-}
-.left {
-    animation: showBtnLeft 3s
-}
-.creater {
-    width: 75vw;
-    height: 85vh;
-    margin: auto;
-    text-align: center;
-    overflow: auto;
-}
+.card-title, .card-text {animation: showText 2s}
+.btnText {animation: showBtnText 3s}
+.right {animation: showBtnRight 3s}
+.left {animation: showBtnLeft 3s}
 
-.type {
-    width: 30vw;
-}
 @keyframes showText {
     0% {transform: translateY(-110%); opacity: 0}
     100% {transform: translate(0); opacity: 1}
@@ -73,26 +49,12 @@ code {
       background: url("./core/source/background-image.jpg") no-repeat top;
       background-size: 200%;
   }
-    .type {
-        width: 50vw;
-    }
 }
 @media only screen and (max-width: 600px) {
-  body {
-    background-size: 400%;
-  }
-    .creater {
-        width: 95vw;
-    }
-    .type {
-        width: 80vw;
-    }
-
+  body {background-size: 400%;}
 }
 @media only screen and (max-width: 740px) {
-    .header div {
-        padding: 0;
-    }
+    .header div {padding: 0;}
     h5 {
         font-size: 1.1rem;
         padding-top: 8px;

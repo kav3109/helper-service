@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './App.css';
+import './App.scss';
 import Header from "./components/Header";
 import Main from "./components/content/Main";
 import Owner from "./components/content/owner/Owner";
