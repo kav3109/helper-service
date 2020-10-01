@@ -5,13 +5,10 @@
   "app.start.button1": "Засновник",
   "app.start.button2": "Учасник",
   "app.owner.button1": "Створити опитування",
-  "app.owner.button2": "Створити тест",
   "app.owner.button3": "Перевірити",
   "app.creator.type": "Оберіть тип питання",
   "app.creator.survey.radio": "Одна можлива відповідь",
-  "app.creator.test.radio": "Одна правильна відповідь",
   "app.creator.survey.checkbox": "Декілька можливих відповідей",
-  "app.creator.test.checkbox": "Декілька правильних відповідей",
   "app.creator.question": "Введіть питання",
   "app.creator.option": "Вариант відповіді",
   "app.creator.correct": "Правильна відповідь"

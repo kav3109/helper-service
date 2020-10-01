@@ -7,7 +7,6 @@ import Participant from "./components/content/partisipant/Participant";
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import firebase from './firebase';
 import CreateSurvey from "./components/content/owner/CreateSurvey";
-import CreateTest from "./components/content/owner/CreateTest";
 import Results from "./components/content/owner/Results";
 
 function App() {
@@ -37,7 +36,6 @@ function App() {
                     <Route exact path="/" component={Main} />
                     <Route path="/owner" component={Owner} />
                     <Route path="/createSurvey" component={CreateSurvey} />
-                    <Route path="/createTest" component={CreateTest} />
                     <Route path="/results" component={Results} />
                     <Route path="/participant" component={Participant} />
                     <Route component={Main} />

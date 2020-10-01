@@ -3,18 +3,24 @@ import {FormattedMessage} from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import './Creater.scss';
+import AddCustomBuilder from '../../Builder'
 
-const plus = <FontAwesomeIcon icon={faPlus}/>
+const plus = <FontAwesomeIcon icon={faPlus}/>;
 
 function CreateSurvey() {
 
     let [type, setType] = useState('radio');
+    let [inputState, setInputState] = useState({
+        count: 0,
+    });
 
     const handleType = (e) => {
         setType = e.target.value;
     };
-    const addTemplate = () => {
-        console.log(type);
+    const handleInput = () => {
+        setInputState(({ count }) => ({
+            count: count + 1,
+        }));
     };
 
     return (
@@ -35,16 +41,20 @@ function CreateSurvey() {
                     </FormattedMessage>
                 </select>
                 <div className="template m-auto">
-                    <FormattedMessage id="app.creator.question" defaultMessage="Your question">
-                        {(message) => <input type="text" className="form-control question mx-auto mb-1" placeholder={message} />}
-                    </FormattedMessage>
-                    <FormattedMessage id="app.creator.option" defaultMessage="Your option">
-                        {(message) => <input type="text" className="form-control question mx-auto mb-1" placeholder={message} />}
-                    </FormattedMessage>
-                    <FormattedMessage id="app.creator.option" defaultMessage="Your option">
-                        {(message) => <input type="text" className="form-control question mx-auto mb-1" placeholder={message} />}
-                    </FormattedMessage>
-                    <div className="plus mt-1 text-center" onClick={addTemplate}>{plus}</div>
+                    <div id='templateOptions'>
+                        <FormattedMessage id="app.creator.question" defaultMessage="Your question">
+                            {(message) => <input type="text" className="form-control question mx-auto mb-1" placeholder={message} />}
+                        </FormattedMessage>
+                        <FormattedMessage id="app.creator.option" defaultMessage="Your option">
+                            {(message) => <input type="text" className="form-control question mx-auto mb-1" placeholder={message} />}
+                        </FormattedMessage>
+                        <FormattedMessage id="app.creator.option" defaultMessage="Your option">
+                            {(message) => <input type="text" className="form-control question mx-auto mb-1" placeholder={message} />}
+                        </FormattedMessage>
+                        {[...Array(inputState.count)].map((val, ind) => <AddCustomBuilder key={ind}/>)}
+                    </div>
+                    <div className="plus mt-1 text-center" onClick={handleInput}>{plus}</div>
+
 
                     {/*<div className="form-check">*/}
                         {/*<input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"*/}

@@ -5,13 +5,10 @@
   "app.start.button1": "Owner",
   "app.start.button2": "Perticipant",
   "app.owner.button1": "Create survey",
-  "app.owner.button2": "Create test",
   "app.owner.button3": "Check results",
   "app.creator.type": "Select question type",
   "app.creator.survey.radio": "Only one possible option",
-  "app.creator.test.radio": "Only one correct option",
   "app.creator.survey.checkbox": "One or several possible options",
-  "app.creator.test.checkbox": "One or several correct options",
   "app.creator.question": "Type question",
   "app.creator.option": "Possible answer",
   "app.creator.correct": "Correct answer"

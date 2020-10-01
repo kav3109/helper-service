@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import { Link} from 'react-router-dom';
 
 function Owner() {
-
-    const [quizType, setQuizeType] = useState('survey');
 
     return (
         <div className="content card">
@@ -15,13 +13,7 @@ function Owner() {
                         defaultMessage="Survey"
                     />
                 </Link>
-                <Link to="/createTest" className="btn btn-primary w-75 m-1 left">
-                    <FormattedMessage
-                        id = "app.owner.button2"
-                        defaultMessage="Test"
-                    />
-                </Link>
-                <Link to="/results" className="btn btn-primary w-75 m-1 right">
+                <Link to="/results" className="btn btn-primary w-75 m-1 left">
                     <FormattedMessage
                         id = "app.owner.button3"
                         defaultMessage="Results"
