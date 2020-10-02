@@ -5,14 +5,19 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const trash = <FontAwesomeIcon icon={faTrash}/>;
 
-function AddCustomInput() {
+function AddCustomInput(props) {
+
+    const deleteBlock = () => {
+        console.log('delete');
+    };
+
     return (
         <div className="input-group mb-1">
             <FormattedMessage id="app.creator.option" defaultMessage="Your option">
                 {(message) => <input type="text" className="form-control" placeholder={message} />}
             </FormattedMessage>
             <div className="input-group-append">
-                <span className="input-group-text">{trash}</span>
+                <span className="input-group-text" onClick={deleteBlock}>{trash}</span>
             </div>
         </div>
     )

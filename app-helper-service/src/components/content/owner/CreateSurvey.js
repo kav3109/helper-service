@@ -3,7 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import './Creater.scss';
-import AddCustomBuilder from '../../Builder'
+import AddCustomInput from '../../Builder'
 
 const plus = <FontAwesomeIcon icon={faPlus}/>;
 
@@ -51,7 +51,7 @@ function CreateSurvey() {
                         <FormattedMessage id="app.creator.option" defaultMessage="Your option">
                             {(message) => <input type="text" className="form-control question mx-auto mb-1" placeholder={message} />}
                         </FormattedMessage>
-                        {[...Array(inputState.count)].map((val, ind) => <AddCustomBuilder key={ind}/>)}
+                        {[...Array(inputState.count)].map((val, ind) => <AddCustomInput key={ind} index={ind} />)}
                     </div>
                     <div className="plus mt-1 text-center" onClick={handleInput}>{plus}</div>
 
