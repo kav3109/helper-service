@@ -27,10 +27,6 @@ function App() {
         <>
             <Header />
             <Content />
-            {/*<form style={{background: "white"}}>*/}
-                {/*<input type="text" placeholder="write text"/>*/}
-                {/*<input type="submit"/>*/}
-            {/*</form>*/}
         </>
     )
 }
