@@ -1,7 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {FormattedMessage} from 'react-intl';
+import { Link } from 'react-router-dom';
 
-function Header(props) {
+function Main(props) {
 
     return (
         <div className="content card">
@@ -18,21 +19,21 @@ function Header(props) {
                     defaultMessage="Are you participant or owner of a quize?"
                     />
                 </p>
-                <button type="button" className="btn btn-primary w-50 m-1 right"><span className="btnText">
+                <Link to="/owner" className="btn btn-primary w-50 m-1 right">
                     <FormattedMessage
                     id = "app.start.button1"
                     defaultMessage="Owner"
                     />
-                </span></button>
+                </Link>
                 <br/>
-                <button type="button" className="btn btn-primary w-50 m-1 left">
+                <Link to="/participant" className="btn btn-primary w-50 m-1 left">
                     <FormattedMessage
                         id = "app.start.button2"
                         defaultMessage="Participant"
                     />
-                </button>
+                </Link>
             </div>
         </div>
     )
 }
-export default Header;
+export default Main;

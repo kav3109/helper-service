@@ -3,5 +3,13 @@
   "app.start.title": "Choose your role",
   "app.start.description": "Are you participant or owner of a quize?",
   "app.start.button1": "Owner",
-  "app.start.button2": "Perticipant"
+  "app.start.button2": "Perticipant",
+  "app.owner.button1": "Create survey",
+  "app.owner.button3": "Check results",
+  "app.creator.type": "Select question type",
+  "app.creator.survey.radio": "Only one possible option",
+  "app.creator.survey.checkbox": "One or several possible options",
+  "app.creator.question": "Type question",
+  "app.creator.option": "Possible answer",
+  "app.creator.correct": "Correct answer"
 }

@@ -3,5 +3,14 @@
   "app.start.title": "Выберите вашу роль",
   "app.start.description": "Вы участник опроса или создатель?",
   "app.start.button1": "Создатель",
-  "app.start.button2": "Участник"
+  "app.start.button2": "Участник",
+  "app.owner.button1": "Создать опрос",
+  "app.owner.button3": "Проверить",
+  "app.creator.type": "Выберете тип вопроса",
+  "app.creator.survey.radio": "Один возможный ответ",
+  "app.creator.survey.checkbox": "Несколько возможных ответов",
+  "app.creator.question": "Введите вопрос",
+  "app.creator.option": "Вариант ответа",
+  "app.creator.correct": "Правильный ответ"
+
 }

@@ -1,8 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import './App.css';
+import React, {useEffect} from 'react';
+import './App.scss';
 import Header from "./components/Header";
-import Content from "./components/Content";
+import Main from "./components/content/Main";
+import Owner from "./components/content/owner/Owner";
+import Participant from "./components/content/partisipant/Participant";
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import firebase from './firebase';
+import CreateSurvey from "./components/content/owner/CreateSurvey";
+import Results from "./components/content/owner/Results";
 
 function App() {
 
@@ -25,8 +30,17 @@ function App() {
 
     return (
         <>
-            <Header />
-            <Content />
+            <Router>
+                <Header />
+                <Switch>
+                    <Route exact path="/" component={Main} />
+                    <Route path="/owner" component={Owner} />
+                    <Route path="/createSurvey" component={CreateSurvey} />
+                    <Route path="/results" component={Results} />
+                    <Route path="/participant" component={Participant} />
+                    <Route component={Main} />
+                </Switch>
+            </Router>
         </>
     )
 }
