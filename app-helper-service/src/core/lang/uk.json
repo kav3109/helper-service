@@ -11,5 +11,6 @@
   "app.creator.survey.checkbox": "Декілька можливих відповідей",
   "app.creator.question": "Введіть питання",
   "app.creator.option": "Вариант відповіді",
-  "app.creator.correct": "Правильна відповідь"
+  "app.creator.correct": "Правильна відповідь",
+  "app.creator.add": "Додати питання"
 }

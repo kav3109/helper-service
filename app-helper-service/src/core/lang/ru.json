@@ -11,6 +11,7 @@
   "app.creator.survey.checkbox": "Несколько возможных ответов",
   "app.creator.question": "Введите вопрос",
   "app.creator.option": "Вариант ответа",
-  "app.creator.correct": "Правильный ответ"
+  "app.creator.correct": "Правильный ответ",
+  "app.creator.add": "Добавить вопрос"
 
 }
