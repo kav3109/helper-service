@@ -2,6 +2,8 @@ import React, {useState, useContext} from 'react';
 import {FormattedMessage} from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useForm } from 'react-hook-form';
+import {SurveyContext} from "../owner/CreateSurvey";
 
 const plus = <FontAwesomeIcon icon={faPlus}/>;
 const trash = <FontAwesomeIcon icon={faTrash}/>;
@@ -12,9 +14,9 @@ function AllInputList(props) {
         <>
             {props.allInputs.map((inp) => {
                 if(inp.id <= 1) {
-                    return <StandartInput key={inp.id} index={inp.id} />
+                    return <StandartInput key={inp.id} index={inp.id} register={props.register} />
                 } else {
-                    return <CustomInput key={inp.id} index={inp.id} />
+                    return <CustomInput key={inp.id} index={inp.id} register={props.register} />
                 }
             })}
         </>
@@ -23,20 +25,14 @@ function AllInputList(props) {
 
 function StandartInput(props) {
 
-    const {setQuestionOption} = useContext(TemplateContext);
-    const [val, setVal] = useState('');
-
-    function handleInputValue(e) {
-        setVal(e.target.value);
-    }
-
     return (
         <>
             <FormattedMessage id="app.creator.option" defaultMessage="Your option">
-                {(message) => <input type="text" className="form-control question mx-auto mb-1"
+                {(message) => <input type="text"
+                                     name={'option'+props.index}
+                                     className="form-control question mx-auto mb-1"
                                      placeholder={message}
-                                     onChange={handleInputValue}
-                                     onBlur={setQuestionOption.bind(null, {id: props.index, val: val})}
+                                     ref={props.register({required: true})}
                 />}
             </FormattedMessage>
         </>
@@ -46,21 +42,16 @@ function StandartInput(props) {
 
 function CustomInput(props) {
 
-    const {removeCustomInput, setQuestionOption} = useContext(TemplateContext);
-    const [val, setVal] = useState('');
-
-    function handleInputValue(e) {
-        setVal(e.target.value);
-    }
+    const {removeCustomInput} = useContext(TemplateContext);
 
     return(
         <>
             <div className="input-group mb-1">
                 <FormattedMessage id="app.creator.option" defaultMessage="Your option">
                     {(message) => <input type="text" className="form-control"
+                                         name={'option'+props.index}
                                          placeholder={message}
-                                         onChange={handleInputValue}
-                                         onBlur={setQuestionOption.bind(null, {id: props.index, val: val})}
+                                         ref={props.register({required: true})}
                     />}
                 </FormattedMessage>
                 <div className="input-group-append">
@@ -72,48 +63,11 @@ function CustomInput(props) {
     )
 }
 
-function Template() {
+function Template(props) {
 
+    const { register, handleSubmit } = useForm();
     const [allInputs, setAllInputs] = useState([{id:0, val:''},{id:1, val:''}]);
-    const [question, setQuestion] = useState([{
-        id: '',
-        type: '',
-        question: '',
-        options: []
-    }]);
-
-    function handleId(id) {
-        setQuestion({
-            id: id,
-            type: question.type,
-            question: question.question,
-            options: question.options
-        });
-    }
-    function handleType(e) {
-        setQuestion({
-            id: question.id,
-            type: e.target.value,
-            question: question.question,
-            options: question.options
-        });
-    }
-    function handleQuestion(e) {
-        setQuestion({
-            id: question.id,
-            type: question.type,
-            question: e.target.value,
-            options: question.options
-        });
-    }
-    function handleOptions(e) {
-        setQuestion({
-            id: question.id,
-            type: question.type,
-            question: e.target.value,
-            options: question.options
-        });
-    }
+    const {addQuestion} = useContext(SurveyContext);
 
     function addCustomInput() {
         setAllInputs(allInputs.concat([{
@@ -125,19 +79,29 @@ function Template() {
     function  removeCustomInput(id) {
         setAllInputs(allInputs.filter(val => val.id !== id));
     }
-
-    function test() {
-        console.log(allInputs);
-    }
-
-    function setQuestionOption(obj) {
-        allInputs.map((item) => {
-            if(item.id === obj.id) item.val = obj.val;
-        })
+    
+    function onSubmit(data) {
+        let obj = {
+            type: '',
+            quest: '',
+            options: []
+        };
+        let count = 0;
+        for(let key in data) {
+            if(count === 0) {
+                obj.type = data[key];
+            } else if(count === 1) {
+                obj.quest = data[key];
+            } else {
+                obj.options.push(data[key]);
+            }
+            count++;
+        }
+        addQuestion(obj);
     }
 
     return (
-        <TemplateContext.Provider value={{ removeCustomInput, setQuestionOption }}>
+        <TemplateContext.Provider value={{ removeCustomInput}}>
             <div className="creater card">
                 <div className="card-body">
                     <h5>
@@ -146,28 +110,37 @@ function Template() {
                             defaultMessage="Select question type"
                         />
                     </h5>
-                    <select className="form-control type mx-auto mb-1" id="type" onChange={handleType}>
-                        <FormattedMessage id="app.creator.survey.radio" defaultMessage="Radio">
-                            {(message) => <option value="radio">{message}</option>}
-                        </FormattedMessage>
-                        <FormattedMessage id="app.creator.survey.checkbox" defaultMessage="Checkbox">
-                            {(message) => <option value="checkbox">{message}</option>}
-                        </FormattedMessage>
-                    </select>
-                    <div className="template m-auto">
-                        <div id='templateOptions'>
-                            <FormattedMessage id="app.creator.question" defaultMessage="Your question">
-                                {(message) => <input type="text" className="form-control question mx-auto mb-1"
-                                                     placeholder={message}
-                                                     onChange={handleQuestion}/>}
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <select name="typeQuestion"
+                                className="form-control type mx-auto mb-1"
+                                id="type"
+                                ref={register}
+                        >
+                            <FormattedMessage id="app.creator.survey.radio" defaultMessage="Radio">
+                                {(message) => <option value="radio">{message}</option>}
                             </FormattedMessage>
+                            <FormattedMessage id="app.creator.survey.checkbox" defaultMessage="Checkbox">
+                                {(message) => <option value="checkbox">{message}</option>}
+                            </FormattedMessage>
+                        </select>
+                        <div className="template m-auto">
+                            <div id='templateOptions'>
+                                <FormattedMessage id="app.creator.question" defaultMessage="Your question">
+                                    {(message) => <input type="text"
+                                                         name="question"
+                                                         className="form-control question mx-auto mb-1"
+                                                         placeholder={message}
+                                                         ref={register({required: true})}
+                                    />}
+                                </FormattedMessage>
+                            </div>
+                            <AllInputList allInputs={allInputs} register={register}/>
+                            <div className="plus mt-1 text-center" onClick={addCustomInput}>{plus}</div>
                         </div>
-                        <AllInputList allInputs={allInputs}/>
-                        <div className="plus mt-1 text-center" onClick={addCustomInput}>{plus}</div>
-                    </div>
-                    <FormattedMessage id="app.creator.add" defaultMessage="Add">
-                        {(message) => <button type="button" className="btn btn-primary mt-1 w-50" onClick={test}>{message}</button>}
-                    </FormattedMessage>
+                        <FormattedMessage id="app.creator.add" defaultMessage="Add">
+                            {(message) => <button type="submit" className="btn btn-primary mt-1 w-50" onClick={handleSubmit}>{message}</button>}
+                        </FormattedMessage>
+                    </form>
                 </div>
             </div>
         </TemplateContext.Provider>
