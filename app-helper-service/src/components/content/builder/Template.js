@@ -66,8 +66,13 @@ function CustomInput(props) {
 function Template(props) {
 
     const { register, handleSubmit } = useForm();
-    const [allInputs, setAllInputs] = useState([{id:0, val:''},{id:1, val:''}]);
+    const [allInputs, setAllInputs] = useState([{id:0},{id:1}]);
     const {addQuestion} = useContext(SurveyContext);
+
+    function clearForm() {
+        let inputs = document.querySelectorAll('input[type="text"]');
+        inputs.forEach(el => el.value='');
+    }
 
     function addCustomInput() {
         setAllInputs(allInputs.concat([{
@@ -98,51 +103,48 @@ function Template(props) {
             count++;
         }
         addQuestion(obj);
+        clearForm();
     }
 
     return (
         <TemplateContext.Provider value={{ removeCustomInput}}>
-            <div className="creater card">
-                <div className="card-body">
-                    <h5>
-                        <FormattedMessage
-                            id = "app.creator.type"
-                            defaultMessage="Select question type"
-                        />
-                    </h5>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <select name="typeQuestion"
-                                className="form-control type mx-auto mb-1"
-                                id="type"
-                                ref={register}
-                        >
-                            <FormattedMessage id="app.creator.survey.radio" defaultMessage="Radio">
-                                {(message) => <option value="radio">{message}</option>}
-                            </FormattedMessage>
-                            <FormattedMessage id="app.creator.survey.checkbox" defaultMessage="Checkbox">
-                                {(message) => <option value="checkbox">{message}</option>}
-                            </FormattedMessage>
-                        </select>
-                        <div className="template m-auto">
-                            <div id='templateOptions'>
-                                <FormattedMessage id="app.creator.question" defaultMessage="Your question">
-                                    {(message) => <input type="text"
-                                                         name="question"
-                                                         className="form-control question mx-auto mb-1"
-                                                         placeholder={message}
-                                                         ref={register({required: true})}
-                                    />}
-                                </FormattedMessage>
-                            </div>
-                            <AllInputList allInputs={allInputs} register={register}/>
-                            <div className="plus mt-1 text-center" onClick={addCustomInput}>{plus}</div>
-                        </div>
-                        <FormattedMessage id="app.creator.add" defaultMessage="Add">
-                            {(message) => <button type="submit" className="btn btn-primary mt-1 w-50" onClick={handleSubmit}>{message}</button>}
+            <h5>
+                <FormattedMessage
+                    id = "app.creator.type"
+                    defaultMessage="Select question type"
+                />
+            </h5>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <select name="typeQuestion"
+                        className="form-control type mx-auto mb-1"
+                        id="type"
+                        ref={register}
+                >
+                    <FormattedMessage id="app.creator.survey.radio" defaultMessage="Radio">
+                        {(message) => <option value="radio">{message}</option>}
+                    </FormattedMessage>
+                    <FormattedMessage id="app.creator.survey.checkbox" defaultMessage="Checkbox">
+                        {(message) => <option value="checkbox">{message}</option>}
+                    </FormattedMessage>
+                </select>
+                <div className="template m-auto">
+                    <div id='templateOptions'>
+                        <FormattedMessage id="app.creator.question" defaultMessage="Your question">
+                            {(message) => <input type="text"
+                                                 name="question"
+                                                 className="form-control question mx-auto mb-1"
+                                                 placeholder={message}
+                                                 ref={register({required: true})}
+                            />}
                         </FormattedMessage>
-                    </form>
+                    </div>
+                    <AllInputList allInputs={allInputs} register={register}/>
+                    <div className="plus mt-1 text-center" onClick={addCustomInput}>{plus}</div>
                 </div>
-            </div>
+                <FormattedMessage id="app.creator.add" defaultMessage="Add">
+                    {(message) => <button type="submit" className="btn btn-primary mt-1 add" onClick={handleSubmit}>{message}</button>}
+                </FormattedMessage>
+            </form>
         </TemplateContext.Provider>
     )
 }

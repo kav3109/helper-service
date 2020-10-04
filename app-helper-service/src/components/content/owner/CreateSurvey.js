@@ -10,13 +10,19 @@ function CreateSurvey() {
     const [arrQuest, setArrQuest] = useState([]);
 
     function addQuestion(quest) {
-        setArrQuest(arrQuest.push(quest));
+        setArrQuest(arrQuest.concat([quest]));
+        console.log(arrQuest);
     }
 
     return (
         <SurveyContext.Provider value={{addQuestion}}>
-            <Template />
-            <SurveyView />
+            <div className="creater card">
+                <div className="card-body">
+                    <Template />
+                    <SurveyView arrQuests={arrQuest}/>
+                </div>
+            </div>
+
         </SurveyContext.Provider>
     )
 }

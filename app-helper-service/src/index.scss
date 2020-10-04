@@ -24,6 +24,12 @@ code {
 .btnText {animation: showBtnText 3s}
 .right {animation: showBtnRight 3s}
 .left {animation: showBtnLeft 3s}
+.card-question{animation: showCard 1s;}
+
+@keyframes showCard {
+  0% {transform: scale(0.1, 0.1)}
+  100% {transform: scale(1, 1)}
+}
 
 @keyframes showText {
     0% {transform: translateY(-110%); opacity: 0}

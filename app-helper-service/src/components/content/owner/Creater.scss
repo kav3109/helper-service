@@ -11,7 +11,7 @@
   padding: 1rem;
   text-align: left;
 }
-.type, .template {width: 30vw;}
+.type, .template, .add, .card-question {width: 30vw;}
 .plus {
   color: #007bff;
   opacity: .8;
@@ -20,8 +20,8 @@
 }
 .plus:hover {cursor: pointer; opacity: 1}
 
-@media only screen and (max-width: 1280px) {.type, .template {width: 50vw;}}
+@media only screen and (max-width: 1280px) {.type, .template, .add, .card-question {width: 50vw;}}
 @media only screen and (max-width: 600px) {
   .creater {width: 95vw;}
-  .type, .template {width: 80vw;}
+  .type, .template,.add, .card-question {width: 80vw;}
 }
