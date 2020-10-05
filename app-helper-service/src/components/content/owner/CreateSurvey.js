@@ -22,7 +22,6 @@ function CreateSurvey() {
                     <SurveyView arrQuests={arrQuest}/>
                 </div>
             </div>
-
         </SurveyContext.Provider>
     )
 }
