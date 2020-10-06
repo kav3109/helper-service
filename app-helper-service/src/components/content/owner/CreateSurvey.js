@@ -10,7 +10,7 @@ export const SurveyContext = React.createContext();
 function CreateSurvey() {
 
     const [arrQuest, setArrQuest] = useState(getStorage());
-    let isCreated = false;
+    const [isShowed, setIsShowed] = useState(false);
 
     function getStorage() {
         let store = localStorage.getItem('surveyAutosave');
@@ -28,6 +28,8 @@ function CreateSurvey() {
 
     function openPopup() {
         console.log('opened');
+        setIsShowed(true);
+        console.log(isShowed);
     }
 
     function clearStorage() {
@@ -52,6 +54,7 @@ function CreateSurvey() {
                     }
                 </div>
             </div>
+            {isShowed? <CreationPopup />: null}
         </SurveyContext.Provider>
     )
 }
