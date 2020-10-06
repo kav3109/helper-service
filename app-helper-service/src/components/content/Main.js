@@ -2,7 +2,7 @@ import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import { Link } from 'react-router-dom';
 
-function Main(props) {
+function Main() {
 
     return (
         <div className="content card">

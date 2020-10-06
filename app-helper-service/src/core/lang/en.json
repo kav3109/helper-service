@@ -12,5 +12,6 @@
   "app.creator.question": "Type question",
   "app.creator.option": "Possible answer",
   "app.creator.correct": "Correct answer",
-  "app.creator.add": "Add question"
+  "app.creator.add": "Add question",
+  "app.creator.create": "Create"
 }

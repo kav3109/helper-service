@@ -3,7 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import {Context} from "./Wrapper";
 import { Link } from 'react-router-dom';
 
-function Header(props) {
+function Header() {
 
     const context = useContext(Context);
 

@@ -3,7 +3,8 @@ import {FormattedMessage} from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
-import {SurveyContext} from "../owner/CreateSurvey";
+import {SurveyContext} from '../owner/CreateSurvey';
+import PropTypes from 'prop-types';
 
 const plus = <FontAwesomeIcon icon={faPlus}/>;
 const trash = <FontAwesomeIcon icon={faTrash}/>;
@@ -23,6 +24,11 @@ function AllInputList(props) {
     )
 }
 
+StandartInput.propTypes = {
+    allInputs: PropTypes.arrayOf(PropTypes.object),
+    register: PropTypes.func
+};
+
 function StandartInput(props) {
 
     return (
@@ -38,6 +44,11 @@ function StandartInput(props) {
         </>
     )
 }
+
+StandartInput.propTypes = {
+    index: PropTypes.number.isRequired,
+    register: PropTypes.func
+};
 
 
 function CustomInput(props) {
@@ -63,7 +74,12 @@ function CustomInput(props) {
     )
 }
 
-function Template(props) {
+CustomInput.propTypes = {
+    index: PropTypes.number.isRequired,
+    register: PropTypes.func
+};
+
+function Template() {
 
     const { register, handleSubmit } = useForm();
     const [allInputs, setAllInputs] = useState([{id:0},{id:1}]);
@@ -148,4 +164,5 @@ function Template(props) {
         </TemplateContext.Provider>
     )
 }
+
 export default Template;

@@ -1,9 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {FormattedMessage} from 'react-intl';
 
 function QuestionList(props) {
     return (
         <>
-            <p>quest test222</p>
+            <h2 className="my-2">
+                <FormattedMessage
+                id = "app.creator.preview"
+                defaultMessage="Survey Preview"/>
+            </h2>
             {props.list.map((val, ind) => {
                 return <QuestionItem key={ind+val.quest} index={ind} values={val} />
             })}
@@ -11,9 +17,13 @@ function QuestionList(props) {
     )
 }
 
+QuestionList.propTypes = {
+    list: PropTypes.arrayOf(PropTypes.object),
+};
+
 function QuestionItem(props) {
     return (
-        <div className="card card-question mt-1 mx-auto">
+        <div className="card card-question mt-1 mx-auto text-left">
             <div className="card-body">
                 <h5><span>{props.index+1}. </span>{props.values.quest}</h5>
                 <OptionList options={props.values.options} type={props.values.type} name={props.values.quest}/>
@@ -21,6 +31,11 @@ function QuestionItem(props) {
         </div>
     )
 }
+
+QuestionItem.propTypes = {
+    index: PropTypes.number,
+    values: PropTypes.object
+};
 
 function OptionList(props) {
     return (
@@ -36,6 +51,12 @@ function OptionList(props) {
     )
 }
 
+OptionList.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string),
+    type: PropTypes.string,
+    name: PropTypes.string
+};
+
 function RadioItem(props) {
     return (
         <>
@@ -44,9 +65,15 @@ function RadioItem(props) {
                        value={props.val} />
                     <label className="form-check-label" htmlFor={props.val}>{props.val}</label>
             </div>
+            <br/>
         </>
     )
 }
+
+RadioItem.propTypes = {
+    type: PropTypes.string,
+    val: PropTypes.string
+};
 
 function CheckboxItem(props) {
     return (
@@ -55,18 +82,27 @@ function CheckboxItem(props) {
                 <input className="form-check-input" type="checkbox" id={props.val} value={props.val} />
                     <label className="form-check-label" htmlFor={props.val}>{props.val}</label>
             </div>
+            <br/>
         </>
     )
 }
 
-export default function SurveyView(props) {
+CheckboxItem.propTypes = {
+    type: PropTypes.string,
+    val: PropTypes.string
+};
+
+function SurveyView(props) {
 
     return (
         <>
-            {props.arrQuests.length > 0?
-                <div className="questWrapper">
-                    <QuestionList list={props.arrQuests}/>
-                </div> : <p>no quests test</p>}
+            <QuestionList list={props.arrQuests}/>
         </>
     )
 }
+
+SurveyView.propTypes = {
+    arrQuests: PropTypes.arrayOf(PropTypes.object),
+};
+
+export default SurveyView;

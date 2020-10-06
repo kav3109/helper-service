@@ -12,6 +12,8 @@
   "app.creator.question": "Введите вопрос",
   "app.creator.option": "Вариант ответа",
   "app.creator.correct": "Правильный ответ",
-  "app.creator.add": "Добавить вопрос"
+  "app.creator.add": "Добавить вопрос",
+  "app.creator.preview": "Предварительный просмотр",
+  "app.creator.create": "Создать"
 
 }

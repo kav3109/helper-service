@@ -3,6 +3,7 @@ import {IntlProvider} from 'react-intl';
 import English from '../core/lang/en';
 import Ukraine from '../core/lang/uk';
 import Russia from '../core/lang/ru';
+import PropTypes from 'prop-types';
 
 export const Context = React.createContext();
 const local = navigator.language;
@@ -43,4 +44,9 @@ const Wrapper = (props) => {
         </Context.Provider>
     );
 };
+
+Wrapper.propTypes = {
+  children: PropTypes.object
+};
+
 export default Wrapper;

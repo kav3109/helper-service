@@ -24,6 +24,7 @@ code {
 .btnText {animation: showBtnText 3s}
 .right {animation: showBtnRight 3s}
 .left {animation: showBtnLeft 3s}
+.bottom {animation: showBtnBottom 3s}
 .card-question{animation: showCard 1s;}
 
 @keyframes showCard {
@@ -49,6 +50,11 @@ code {
     0% {transform: translate(310%);}
     90% {transform: translate(-10%);}
     100% {transform: translate(0);}
+}
+@keyframes showBtnBottom {
+  0% {transform: translateY(310%);}
+  90% {transform: translate(-10%);}
+  100% {transform: translate(0);}
 }
 @media only screen and (max-width: 1280px) {
   body {
