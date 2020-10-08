@@ -10,32 +10,29 @@ export const SurveyContext = React.createContext();
 function CreateSurvey() {
 
     const [arrQuest, setArrQuest] = useState(getStorage());
-    const [isShowed, setIsShowed] = useState(false);
+    const [show, setShow] = useState(false);
+
+    function closePopup() {
+        setShow(false);
+    }
 
     function getStorage() {
         let store = localStorage.getItem('surveyAutosave');
-        return store? JSON.parse(store): [];//TODO ask why we cannot see last added question
+        return store? JSON.parse(store): [];
     }
 
     function addQuestion(quest) {
-        setArrQuest(arrQuest.concat([quest]));
-        localStorage.setItem('surveyAutosave', JSON.stringify(arrQuest));
+        let arr = arrQuest.concat([quest]);
+        setArrQuest(arr);
+        localStorage.setItem('surveyAutosave', JSON.stringify(arr));
     }
 
-    function createSurvey() {
-        console.log('created');
+    function sendForm() {
+        localStorage.clear('surveyAutosave');
+        setShow(false);
+        console.log('created');//TODO here we send data to farefase
+        setArrQuest([]);
     }
-
-    function openPopup() {
-        console.log('opened');
-        setIsShowed(true);
-        console.log(isShowed);
-    }
-
-    function clearStorage() {
-        localStorage.clear('surveyAutosave')
-    }
-
     return (
         <SurveyContext.Provider value={{addQuestion}}>
             <div className="creater card">
@@ -44,7 +41,7 @@ function CreateSurvey() {
                     {arrQuest.length > 0?
                         <div className="questWrapper">
                             <SurveyView arrQuests={arrQuest} />
-                            <div className="btn btn-success add m-1 right" onClick={openPopup}>
+                            <div className="btn btn-success add m-1 right" onClick={() => setShow(true)}>
                                 <FormattedMessage
                                     id = "app.creator.create"
                                     defaultMessage="Create Survey"
@@ -54,7 +51,7 @@ function CreateSurvey() {
                     }
                 </div>
             </div>
-            {isShowed? <CreationPopup />: null}
+            <CreationPopup isPresent={show} create={sendForm} close={closePopup} />
         </SurveyContext.Provider>
     )
 }

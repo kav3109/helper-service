@@ -14,5 +14,7 @@
   "app.creator.correct": "Правильна відповідь",
   "app.creator.add": "Додати питання",
   "app.creator.preview": "Попередній вигляд",
-  "app.creator.create": "Створити"
+  "app.creator.create": "Створити",
+  "app.creator.popup.title": "Ви впевнені?",
+  "app.creator.popup.body": "Якщо ви створите цю форму для користувачів, ви більше не зможете її редагувати."
 }

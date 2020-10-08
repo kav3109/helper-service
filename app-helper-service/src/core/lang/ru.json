@@ -14,6 +14,8 @@
   "app.creator.correct": "Правильный ответ",
   "app.creator.add": "Добавить вопрос",
   "app.creator.preview": "Предварительный просмотр",
-  "app.creator.create": "Создать"
+  "app.creator.create": "Создать",
+  "app.creator.popup.title": "Вы уверены?",
+  "app.creator.popup.body": "Если вы создидите эту форму для пользователей, вы больше не сможете ее редактировать."
 
 }

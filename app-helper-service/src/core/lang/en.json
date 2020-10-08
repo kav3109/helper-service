@@ -13,5 +13,7 @@
   "app.creator.option": "Possible answer",
   "app.creator.correct": "Correct answer",
   "app.creator.add": "Add question",
-  "app.creator.create": "Create"
+  "app.creator.create": "Create",
+  "app.creator.popup.title": "Are you sure?",
+  "app.creator.popup.body": "If you create this form for users, you will not be able to edit it any more."
 }
