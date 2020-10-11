@@ -1,19 +1,31 @@
-import React from 'react';
-import {FormattedMessage} from 'react-intl';
+import React, {useState} from 'react';
+import Start from './Start'
+
 
 function Participant() {
 
+    const [userData, setUserData] = useState({
+        ident: '',
+        name: '',
+    });
+    const [started, setStarted] = useState(false);
+
+    function handleUsetData(id, name) {
+        setUserData({
+            ident: id,
+            name: name
+        });
+    }
+
+    function handleStarted() {
+        setStarted(true);
+    }
+
     return (
-        <div className="content card">
-            <div className="card-body">
-                <button type="button" className="btn btn-primary w-50 m-1 left">
-                    <FormattedMessage
-                        id = "app.start.button2"
-                        defaultMessage="Participant"
-                    />
-                </button>
-            </div>
-        </div>
+        <>
+            <Start userName={handleUsetData} started={handleStarted}/>
+            {started? <p>{userData.name}</p> : null}
+        </>
     )
 }
 export default Participant;

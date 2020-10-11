@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {FormattedMessage} from 'react-intl';
 
 function QuestionList(props) {
     return (
         <>
-            <h2 className="my-2">
-                <FormattedMessage
-                id = "app.creator.preview"
-                defaultMessage="Survey Preview"/>
-            </h2>
+            <h3 className="my-2 mx-1">
+                {props.title}
+            </h3>
             {props.list.map((val, ind) => {
                 return <QuestionItem key={ind+val.quest} index={ind} values={val} />
             })}
@@ -23,7 +20,7 @@ QuestionList.propTypes = {
 
 function QuestionItem(props) {
     return (
-        <div className="card card-question mt-1 mx-auto text-left">
+        <div className="card card-question mt-2 mx-auto text-left">
             <div className="card-body">
                 <h5><span>{props.index+1}. </span>{props.values.quest}</h5>
                 <OptionList options={props.values.options} type={props.values.type} name={props.values.quest}/>
@@ -96,7 +93,7 @@ function SurveyView(props) {
 
     return (
         <>
-            <QuestionList list={props.arrQuests}/>
+            <QuestionList list={props.arrQuests} title={props.surveyName}/>
         </>
     )
 }

@@ -37,12 +37,17 @@ function CreationPopup(props) {
                     <Button variant="secondary" onClick={handleClose}>
                         {close}
                     </Button>
-                    <Button variant="primary" onClick={handleCreation}>
-                        {ok}
+                    <Button variant="success" onClick={handleCreation}>
+                        {ok} OK
                     </Button>
                 </Modal.Footer>
             </Modal>
         </>
     );
 }
+
+CreationPopup.propTypes = {
+    isPresent: PropTypes.bool
+};
+
 export default CreationPopup;

@@ -6,6 +6,7 @@
   "app.start.button2": "Участник",
   "app.owner.button1": "Создать опрос",
   "app.owner.button3": "Проверить",
+  "app.creator.title": "Введите назване опроса",
   "app.creator.type": "Выберете тип вопроса",
   "app.creator.survey.radio": "Один возможный ответ",
   "app.creator.survey.checkbox": "Несколько возможных ответов",
@@ -13,9 +14,13 @@
   "app.creator.option": "Вариант ответа",
   "app.creator.correct": "Правильный ответ",
   "app.creator.add": "Добавить вопрос",
-  "app.creator.preview": "Предварительный просмотр",
   "app.creator.create": "Создать",
   "app.creator.popup.title": "Вы уверены?",
-  "app.creator.popup.body": "Если вы создидите эту форму для пользователей, вы больше не сможете ее редактировать."
+  "app.creator.popup.body": "Если вы создидите эту форму для пользователей, вы больше не сможете ее редактировать.",
+  "app.creator.id.title": "Ваш идентификатор опроса",
+  "app.creator.id.description": "Сохраните его для отправки участникам опроса и просмотра разультатов",
+  "app.participant.surveyId": "Идентификатор опроса",
+  "app.participant.name": "ФИО",
+  "app.participant.start": "Начать"
 
 }

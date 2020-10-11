@@ -21,10 +21,10 @@ code {
     text-align: center;
 }
 .card-title, .card-text {animation: showText 2s}
-.btnText {animation: showBtnText 3s}
-.right {animation: showBtnRight 3s}
-.left {animation: showBtnLeft 3s}
-.bottom {animation: showBtnBottom 3s}
+.btnText {animation: showBtnText 2s}
+.right {animation: showBtnRight 2s}
+.left {animation: showBtnLeft 2s}
+.bottom {animation: showBtnBottom 2s}
 .card-question{animation: showCard 1s;}
 
 @keyframes showCard {

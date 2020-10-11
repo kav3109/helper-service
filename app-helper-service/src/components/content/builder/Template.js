@@ -50,7 +50,6 @@ StandartInput.propTypes = {
     register: PropTypes.func
 };
 
-
 function CustomInput(props) {
 
     const {removeCustomInput} = useContext(TemplateContext);
@@ -124,13 +123,14 @@ function Template() {
 
     return (
         <TemplateContext.Provider value={{ removeCustomInput}}>
-            <h5>
-                <FormattedMessage
-                    id = "app.creator.type"
-                    defaultMessage="Select question type"
-                />
-            </h5>
+
             <form onSubmit={handleSubmit(onSubmit)}>
+                <h5>
+                    <FormattedMessage
+                        id = "app.creator.type"
+                        defaultMessage="Select question type"
+                    />
+                </h5>
                 <select name="typeQuestion"
                         className="form-control type mx-auto mb-1"
                         id="type"

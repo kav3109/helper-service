@@ -6,6 +6,7 @@
   "app.start.button2": "Учасник",
   "app.owner.button1": "Створити опитування",
   "app.owner.button3": "Перевірити",
+  "app.creator.title": "Введіть назву опитування",
   "app.creator.type": "Оберіть тип питання",
   "app.creator.survey.radio": "Одна можлива відповідь",
   "app.creator.survey.checkbox": "Декілька можливих відповідей",
@@ -13,8 +14,12 @@
   "app.creator.option": "Вариант відповіді",
   "app.creator.correct": "Правильна відповідь",
   "app.creator.add": "Додати питання",
-  "app.creator.preview": "Попередній вигляд",
   "app.creator.create": "Створити",
   "app.creator.popup.title": "Ви впевнені?",
-  "app.creator.popup.body": "Якщо ви створите цю форму для користувачів, ви більше не зможете її редагувати."
+  "app.creator.popup.body": "Якщо ви створите цю форму для користувачів, ви більше не зможете її редагувати.",
+  "app.creator.id.title": "Ваш ідентифікатор опитування",
+  "app.creator.id.description": "Збережіть його щоб передати учасникам опитування і переглянути результати",
+  "app.participant.surveyId": "Ідентифікатор опитування",
+  "app.participant.name": "ПІБ",
+  "app.participant.start": "Почати"
 }

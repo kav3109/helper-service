@@ -6,6 +6,7 @@
   "app.start.button2": "Perticipant",
   "app.owner.button1": "Create survey",
   "app.owner.button3": "Check results",
+  "app.creator.title": "Type survey's title",
   "app.creator.type": "Select question type",
   "app.creator.survey.radio": "Only one possible option",
   "app.creator.survey.checkbox": "One or several possible options",
@@ -15,5 +16,10 @@
   "app.creator.add": "Add question",
   "app.creator.create": "Create",
   "app.creator.popup.title": "Are you sure?",
-  "app.creator.popup.body": "If you create this form for users, you will not be able to edit it any more."
+  "app.creator.popup.body": "If you create this form for users, you will not be able to edit it any more.",
+  "app.creator.id.title": "Your survey ID",
+  "app.creator.id.description": "Save it to send to participants and results view",
+  "app.participant.surveyId": "Survey ID",
+  "app.participant.name": "Your first name and last name",
+  "app.participant.start": "Start"
 }
