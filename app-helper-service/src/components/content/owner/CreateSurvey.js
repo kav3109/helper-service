@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './CreateSurvey.scss';
-import Template from '../builder/Template';
-import SurveyView from '../builder/SurveyView';
+import './owner.scss';
+import Template from './Template';
+import SurveyView from './SurveyView';
 import { FormattedMessage } from 'react-intl';
 import CreationPopup from '../popup/CreationPopup';
-import SurveyId from '../builder/SurveyId';
+import SurveyId from './SurveyId';
 import db from '../../../firebase';
 
 export const SurveyContext = React.createContext();

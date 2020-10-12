@@ -21,5 +21,6 @@
   "app.creator.id.description": "Save it to send to participants and results view",
   "app.participant.surveyId": "Survey ID",
   "app.participant.name": "Your first name and last name",
-  "app.participant.start": "Start"
+  "app.participant.start": "Start",
+  "app.participant.error": "No survey with such ID"
 }

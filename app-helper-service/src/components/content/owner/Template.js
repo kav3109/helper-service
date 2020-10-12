@@ -3,7 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
-import {SurveyContext} from '../owner/CreateSurvey';
+import {SurveyContext} from './CreateSurvey';
 import PropTypes from 'prop-types';
 
 const plus = <FontAwesomeIcon icon={faPlus}/>;

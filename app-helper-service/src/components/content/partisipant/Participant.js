@@ -1,30 +1,45 @@
 import React, {useState} from 'react';
-import Start from './Start'
-
+import './participant.scss';
+import Start from './Start';
+import SurveyForm from './SurveyForm';
+import db from '../../../firebase';
 
 function Participant() {
 
-    const [userData, setUserData] = useState({
-        ident: '',
-        name: '',
-    });
-    const [started, setStarted] = useState(false);
+    let questionID, userName;
+    const [started, setStarted] = useState(localStorage.getItem('started'));
+    const [questions, setQuestions] = useState();
+    const [error, setError] = useState(false);
 
-    function handleUsetData(id, name) {
-        setUserData({
-            ident: id,
-            name: name
+    function getQuestions(id) {
+
+        const docRef = db.collection('questions').doc(questionID);
+
+        docRef.get().then(function(doc) {
+            if (doc.exists) {
+                setQuestions(doc.data());
+                setError(false);
+                setStarted(true);
+                localStorage.setItem('started', true);
+            } else {
+                setError(true);
+                console.log("No such document!");
+            }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
         });
     }
 
-    function handleStarted() {
-        setStarted(true);
+    function handleStarted(id, name) {
+        userName = name;
+        questionID = id.trim();
+        getQuestions(questionID);
     }
 
     return (
         <>
-            <Start userName={handleUsetData} started={handleStarted}/>
-            {started? <p>{userData.name}</p> : null}
+            {!started?<Start started={handleStarted} error={error}/>:null}
+            {started?<SurveyForm userData={userName} questionID={questionID} questions={questions} />:null}
         </>
     )
 }

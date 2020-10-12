@@ -8,8 +8,7 @@ function Start(props) {
     const { register, handleSubmit } = useForm();
 
     function onSubmit(data) {
-        props.userName(data.surveyID, data.userName);
-        props.started();
+        props.started(data.surveyID, data.userName);
     }
 
     return (
@@ -32,6 +31,12 @@ function Start(props) {
                                              ref={register({required: true})}
                         />}
                     </FormattedMessage>
+                    {props.error?<p className="error">
+                        <FormattedMessage
+                            id = "app.participant.error"
+                            defaultMessage="No such survey!"
+                        />
+                    </p>:null}
                     <FormattedMessage id="app.participant.start" defaultMessage="Start">
                         {(message) => <button type="submit"
                                               className="btn btn-primary mt-1"
@@ -45,7 +50,8 @@ function Start(props) {
 
 Start.propTypes = {
     userName: PropTypes.func,
-    started: PropTypes.func
+    started: PropTypes.func,
+    error: PropTypes.bool
 };
 
 export default Start;

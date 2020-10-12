@@ -21,5 +21,6 @@
   "app.creator.id.description": "Збережіть його щоб передати учасникам опитування і переглянути результати",
   "app.participant.surveyId": "Ідентифікатор опитування",
   "app.participant.name": "ПІБ",
-  "app.participant.start": "Почати"
+  "app.participant.start": "Почати",
+  "app.participant.error": "Опитування з таким ідентифікатором не існує"
 }
