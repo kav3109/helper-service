@@ -5,12 +5,8 @@ import PropTypes from 'prop-types';
 import {register} from "../../../serviceWorker";
 
 function QuestionList(props) {
-    console.log(props.list);
     return (
         <>
-            <h3 className="my-2 mx-1">
-                {props.title}
-            </h3>
             {props.list.map((val, ind) => {
                 return <QuestionItem key={ind+val.quest} index={ind} values={val} register={props.register}/>
             })}
@@ -71,7 +67,7 @@ function RadioItem(props) {
                        name={props.name}
                        id={props.val.replace(/\s+/g, '')}
                        value={props.val}
-                       ref={props.register({ required: true })}/>
+                       ref={props.register}/>
                 <label className="form-check-label" htmlFor={props.val.replace(/\s+/g, '')}>{props.val}</label>
             </div>
             <br/>
@@ -93,7 +89,7 @@ function CheckboxItem(props) {
                        name={props.name}
                        id={props.val.replace(/\s+/g, '')}
                        value={props.val}
-                       ref={props.register({ required: true })} />
+                       ref={props.register} />
                 <label className="form-check-label" htmlFor={props.val.replace(/\s+/g, '')}>{props.val}</label>
             </div>
             <br/>
@@ -110,8 +106,10 @@ function SurveyForm(props) {
 
     const { register, handleSubmit } = useForm();
     const [userForm, setUserForm] = useState(getFormData());
-    let title = userForm.val.pop(),
+    let lastElement = userForm.val.pop(),
         arrQuestions = userForm.val;
+    const [title, setTitle] = useState(lastElement);
+
     
     function getFormData() {
         let values;
@@ -125,14 +123,15 @@ function SurveyForm(props) {
     }
     
     function onSubmit(data) {
-        console.log('answers');
+        console.log(data);
     }
 
     return (
         <div className="creater card">
             <div className="card-body">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <QuestionList list={arrQuestions} title={title} register={register} />
+                    <h3 className="my-2 mx-1">{title}</h3>
+                    <QuestionList list={arrQuestions} register={register} />
                     <FormattedMessage id="app.participant.start" defaultMessage="Start">
                         {(message) => <button type="submit"
                                               className="btn btn-primary mt-2">{message}</button>}
