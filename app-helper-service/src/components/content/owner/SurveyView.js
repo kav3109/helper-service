@@ -58,9 +58,9 @@ function RadioItem(props) {
     return (
         <>
             <div className="form-check form-check-inline">
-                <input className="form-check-input" type="radio" name={props.name} id={props.val}
+                <input className="form-check-input" type="radio" name={props.name} id={props.val.replace(/\s+/g, '')}
                        value={props.val} />
-                    <label className="form-check-label" htmlFor={props.val}>{props.val}</label>
+                    <label className="form-check-label" htmlFor={props.val.replace(/\s+/g, '')}>{props.val}</label>
             </div>
             <br/>
         </>
@@ -76,8 +76,8 @@ function CheckboxItem(props) {
     return (
         <>
             <div className="form-check form-check-inline">
-                <input className="form-check-input" type="checkbox" id={props.val} value={props.val} />
-                    <label className="form-check-label" htmlFor={props.val}>{props.val}</label>
+                <input className="form-check-input" type="checkbox" id={props.val.replace(/\s+/g, '')} value={props.val} />
+                    <label className="form-check-label" htmlFor={props.val.replace(/\s+/g, '')}>{props.val}</label>
             </div>
             <br/>
         </>

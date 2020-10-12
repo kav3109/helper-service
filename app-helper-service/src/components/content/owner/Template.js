@@ -158,7 +158,8 @@ function Template() {
                     <div className="plus mt-1 text-center" onClick={addCustomInput}>{plus}</div>
                 </div>
                 <FormattedMessage id="app.creator.add" defaultMessage="Add">
-                    {(message) => <button type="submit" className="btn btn-primary mt-1 add" onClick={handleSubmit}>{message}</button>}
+                    {(message) => <button type="submit" className="btn btn-primary mt-1 add">
+                        {message}</button>}
                 </FormattedMessage>
             </form>
         </TemplateContext.Provider>
