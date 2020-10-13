@@ -6,21 +6,27 @@ import db from '../../../firebase';
 
 function Participant() {
 
-    let surveyID, userName;
     const [started, setStarted] = useState(localStorage.getItem('started'));
-    const [questions, setQuestions] = useState();
+    const [surveyData, setSurveyData] = useState();
     const [error, setError] = useState(false);
 
-    function getQuestions(id) {
+    function prepareSurveyData(questionID, userName) {
 
-        const docRef = db.collection('questions').doc(surveyID);
+        const docRef = db.collection('questions').doc(questionID);
 
         docRef.get().then(function(doc) {
             if (doc.exists) {
-                setQuestions(doc.data());
+                let obj = {
+                    questionID: questionID,
+                    userName: userName,
+                    title: doc.data().title,
+                    questions: doc.data().questions
+                };
+                setSurveyData(obj);
                 setError(false);
                 setStarted(true);
                 localStorage.setItem('started', true);
+                localStorage.setItem('surveyData', JSON.stringify(obj));
             } else {
                 setError(true);
                 console.log("No such document!");
@@ -30,16 +36,14 @@ function Participant() {
         });
     }
 
-    function handleStarted(id, name) {
-        userName = name;
-        surveyID = id.trim();
-        getQuestions(surveyID);
+    function handleStart(id, name) {
+        prepareSurveyData(id.trim(), name)
     }
 
     return (
         <>
-            {!started?<Start started={handleStarted} error={error}/>:null}
-            {started?<SurveyForm userName={userName} surveyID={surveyID} questions={questions} />:null}
+            {!started?<Start started={handleStart} error={error}/>:null}
+            {started?<SurveyForm surveyData={surveyData} />:null}
         </>
     )
 }

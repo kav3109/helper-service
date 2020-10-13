@@ -26,6 +26,13 @@ code {
 .left {animation: showBtnLeft 2s}
 .bottom {animation: showBtnBottom 2s}
 .card-question{animation: showCard 1s;}
+.did-it{animation: showCard 1s, circling 1s }
+
+@keyframes circling {
+  0% {transform: rotate(0deg)}
+  90% {transform: rotate(380deg)}
+  100% {transform: rotate(360deg)}
+}
 
 @keyframes showCard {
   0% {transform: scale(0.1, 0.1)}

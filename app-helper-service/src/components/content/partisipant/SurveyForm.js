@@ -3,6 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import db from '../../../firebase';
+import Finish from './Finish'
 
 function QuestionList(props) {
     return (
@@ -106,33 +107,25 @@ CheckboxItem.propTypes = {
 function SurveyForm(props) {
 
     const { register, handleSubmit } = useForm();
-    const [userForm, setUserForm] = useState(getFormData().questions);
-    const [title, setTitle] = useState(getFormData().title);
+    const [userForm, setUserForm] = useState(getFormData());
 
     function getFormData() {
-        let questions, title;
-        if(props.questions) {
-            questions = props.questions;
-            localStorage.setItem('form', JSON.stringify(props.questions));
+        let data;
+        if(props.surveyData) {
+            data = props.surveyData;
         } else {
-            questions = JSON.parse(localStorage.getItem('form'));
+            data = JSON.parse(localStorage.getItem('surveyData'));
         }
-        title = questions.val.pop();
-        return {
-            title: title,
-            questions: questions.val
-        };
+        return data;
     }
-    
+
     function onSubmit(data) {
         //form validation
         for(let val in data) {
             if(data[val] === '' || data[val].length === 0) return;
         }
-        console.log(data);
-        //****************************************************************************************8
-        db.collection("answers").doc(props.surveyID).set({
-            userName: props.userName,
+        db.collection("answers").doc(userForm.questionID).set({
+            userName: userForm.userName,
             answers: data
             })
             .then(function() {
@@ -141,10 +134,9 @@ function SurveyForm(props) {
             .catch(function(error) {
                 console.error("Error writing document: ", error);
             });
-        //****************************************************************************************8
-        setTitle('Form was sent!');
         setUserForm(false);
-        // localStorage.clear('form');
+        localStorage.clear('surveyData');
+        localStorage.clear('started');
 
     }
 
@@ -152,11 +144,12 @@ function SurveyForm(props) {
         <div className="creater card">
             <div className="card-body">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <h3 className="my-2 mx-1">{title}</h3>
-                    {userForm?<QuestionList list={userForm} register={register} />:null}
+                    <h3 className="my-2 mx-1">{userForm.title}</h3>
+                    {userForm?<QuestionList list={userForm.questions} register={register} />:null}
                     {userForm?<FormattedMessage id="app.participant.send" defaultMessage="SEND">
                         {(message) => <button type="submit" className="btn btn-primary mt-2">{message}</button>}
                     </FormattedMessage>:null}
+                    {!userForm?<Finish />:null}
                 </form>
             </div>
         </div>
@@ -164,9 +157,7 @@ function SurveyForm(props) {
 }
 
 SurveyForm.propTypes = {
-    userName: PropTypes.string,
-    surveyID: PropTypes.string,
-    questions: PropTypes.array
+    surveyData: PropTypes.object
 };
 
 export default SurveyForm;

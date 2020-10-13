@@ -23,5 +23,7 @@
   "app.participant.name": "Your first name and last name",
   "app.participant.start": "Start",
   "app.participant.error": "No survey with such ID",
-  "app.participant.send": "Send"
+  "app.participant.send": "Send",
+  "app.participant.finish.sent": "Form was sent",
+  "app.participant.finish.phrase": "You did it!"
 }

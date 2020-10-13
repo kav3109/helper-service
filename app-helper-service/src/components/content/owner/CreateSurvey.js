@@ -41,12 +41,13 @@ function CreateSurvey() {
         localStorage.clear('questionsAutosave');
         localStorage.clear('titleAutosave');
         setShow(false); //close popup
-        let arr = arrQuest.concat([title]); //add survey's title before push in db
+        // let arr = arrQuest.concat([title]); //add survey's title before push in db
 
         db
             .collection('questions')
             .add({
-                val: arr
+                questions: arrQuest,
+                title: title
             })
             .then((docRef) => {
                 setServeyId(docRef.id);

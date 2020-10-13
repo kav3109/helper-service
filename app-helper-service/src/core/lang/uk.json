@@ -23,5 +23,7 @@
   "app.participant.name": "ПІБ",
   "app.participant.start": "Почати",
   "app.participant.error": "Опитування з таким ідентифікатором не існує",
-  "app.participant.send": "Відправити"
+  "app.participant.send": "Відправити",
+  "app.participant.finish.sent": "Форма відправлена",
+  "app.participant.finish.phrase": "Ви зробили це!"
 }

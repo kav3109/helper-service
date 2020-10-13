@@ -23,6 +23,8 @@
   "app.participant.name": "ФИО",
   "app.participant.start": "Начать",
   "app.participant.error": "Нет опроса с таким идентификанором",
-  "app.participant.send": "Отправить"
+  "app.participant.send": "Отправить",
+  "app.participant.finish.sent": "Форма отправлена",
+  "app.participant.finish.phrase": "Вы сделали это!"
 
 }
