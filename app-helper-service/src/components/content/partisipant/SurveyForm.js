@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
-import {register} from "../../../serviceWorker";
+
 
 function QuestionList(props) {
     return (
@@ -16,6 +16,7 @@ function QuestionList(props) {
 
 QuestionList.propTypes = {
     list: PropTypes.arrayOf(PropTypes.object),
+    title: PropTypes.string,
 };
 
 function QuestionItem(props) {
@@ -105,25 +106,29 @@ CheckboxItem.propTypes = {
 function SurveyForm(props) {
 
     const { register, handleSubmit } = useForm();
-    const [userForm, setUserForm] = useState(getFormData());
-    let lastElement = userForm.val.pop(),
-        arrQuestions = userForm.val;
-    const [title, setTitle] = useState(lastElement);
+    const [userForm, setUserForm] = useState(getFormData().questions);
+    const [title, setTitle] = useState(getFormData().title);
 
-    
     function getFormData() {
-        let values;
+        let questions, title;
         if(props.questions) {
-            values = props.questions;
+            questions = props.questions;
             localStorage.setItem('form', JSON.stringify(props.questions));
         } else {
-            values = JSON.parse(localStorage.getItem('form'));
+            questions = JSON.parse(localStorage.getItem('form'));
         }
-        return values;
+        title = questions.val.pop();
+        return {
+            title: title,
+            questions: questions.val
+        };
     }
     
     function onSubmit(data) {
-        console.log(data);
+        console.log(data);//TODO add validation for missed questions
+        setTitle('Form was sent!');
+        setUserForm(false);
+        // localStorage.clear('form');
     }
 
     return (
@@ -131,11 +136,10 @@ function SurveyForm(props) {
             <div className="card-body">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h3 className="my-2 mx-1">{title}</h3>
-                    <QuestionList list={arrQuestions} register={register} />
-                    <FormattedMessage id="app.participant.start" defaultMessage="Start">
-                        {(message) => <button type="submit"
-                                              className="btn btn-primary mt-2">{message}</button>}
-                    </FormattedMessage>
+                    {userForm?<QuestionList list={userForm} register={register} />:null}
+                    {userForm?<FormattedMessage id="app.participant.start" defaultMessage="Start">
+                        {(message) => <button type="submit" className="btn btn-primary mt-2">{message}</button>}
+                    </FormattedMessage>:null}
                 </form>
             </div>
         </div>
@@ -143,9 +147,9 @@ function SurveyForm(props) {
 }
 
 SurveyForm.propTypes = {
-    userData: PropTypes.string,
+    userName: PropTypes.string,
     questionID: PropTypes.string,
-    questions: PropTypes.object
+    questions: PropTypes.array
 };
 
 export default SurveyForm;

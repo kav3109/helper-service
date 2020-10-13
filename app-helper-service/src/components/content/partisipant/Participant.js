@@ -39,7 +39,7 @@ function Participant() {
     return (
         <>
             {!started?<Start started={handleStarted} error={error}/>:null}
-            {started?<SurveyForm userData={userName} questionID={questionID} questions={questions} />:null}
+            {started?<SurveyForm userName={userName} questionID={questionID} questions={questions} />:null}
         </>
     )
 }
