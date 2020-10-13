@@ -22,5 +22,6 @@
   "app.participant.surveyId": "Ідентифікатор опитування",
   "app.participant.name": "ПІБ",
   "app.participant.start": "Почати",
-  "app.participant.error": "Опитування з таким ідентифікатором не існує"
+  "app.participant.error": "Опитування з таким ідентифікатором не існує",
+  "app.participant.send": "Відправити"
 }

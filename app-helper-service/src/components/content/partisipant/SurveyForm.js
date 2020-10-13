@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
-
+import db from '../../../firebase';
 
 function QuestionList(props) {
     return (
@@ -125,10 +125,27 @@ function SurveyForm(props) {
     }
     
     function onSubmit(data) {
-        console.log(data);//TODO add validation for missed questions
+        //form validation
+        for(let val in data) {
+            if(data[val] === '' || data[val].length === 0) return;
+        }
+        console.log(data);
+        //****************************************************************************************8
+        db.collection("answers").doc(props.surveyID).set({
+            userName: props.userName,
+            answers: data
+            })
+            .then(function() {
+                console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+        //****************************************************************************************8
         setTitle('Form was sent!');
         setUserForm(false);
         // localStorage.clear('form');
+
     }
 
     return (
@@ -137,7 +154,7 @@ function SurveyForm(props) {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h3 className="my-2 mx-1">{title}</h3>
                     {userForm?<QuestionList list={userForm} register={register} />:null}
-                    {userForm?<FormattedMessage id="app.participant.start" defaultMessage="Start">
+                    {userForm?<FormattedMessage id="app.participant.send" defaultMessage="SEND">
                         {(message) => <button type="submit" className="btn btn-primary mt-2">{message}</button>}
                     </FormattedMessage>:null}
                 </form>
@@ -148,7 +165,7 @@ function SurveyForm(props) {
 
 SurveyForm.propTypes = {
     userName: PropTypes.string,
-    questionID: PropTypes.string,
+    surveyID: PropTypes.string,
     questions: PropTypes.array
 };
 

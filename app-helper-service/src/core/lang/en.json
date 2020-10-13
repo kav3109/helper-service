@@ -22,5 +22,6 @@
   "app.participant.surveyId": "Survey ID",
   "app.participant.name": "Your first name and last name",
   "app.participant.start": "Start",
-  "app.participant.error": "No survey with such ID"
+  "app.participant.error": "No survey with such ID",
+  "app.participant.send": "Send"
 }

@@ -22,6 +22,7 @@
   "app.participant.surveyId": "Идентификатор опроса",
   "app.participant.name": "ФИО",
   "app.participant.start": "Начать",
-  "app.participant.error": "Нет опроса с таким идентификанором"
+  "app.participant.error": "Нет опроса с таким идентификанором",
+  "app.participant.send": "Отправить"
 
 }

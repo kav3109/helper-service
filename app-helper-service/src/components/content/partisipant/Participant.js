@@ -6,14 +6,14 @@ import db from '../../../firebase';
 
 function Participant() {
 
-    let questionID, userName;
+    let surveyID, userName;
     const [started, setStarted] = useState(localStorage.getItem('started'));
     const [questions, setQuestions] = useState();
     const [error, setError] = useState(false);
 
     function getQuestions(id) {
 
-        const docRef = db.collection('questions').doc(questionID);
+        const docRef = db.collection('questions').doc(surveyID);
 
         docRef.get().then(function(doc) {
             if (doc.exists) {
@@ -32,14 +32,14 @@ function Participant() {
 
     function handleStarted(id, name) {
         userName = name;
-        questionID = id.trim();
-        getQuestions(questionID);
+        surveyID = id.trim();
+        getQuestions(surveyID);
     }
 
     return (
         <>
             {!started?<Start started={handleStarted} error={error}/>:null}
-            {started?<SurveyForm userName={userName} questionID={questionID} questions={questions} />:null}
+            {started?<SurveyForm userName={userName} surveyID={surveyID} questions={questions} />:null}
         </>
     )
 }
