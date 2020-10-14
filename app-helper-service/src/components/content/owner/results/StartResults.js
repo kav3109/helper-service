@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 
-function CreateSurvey() {
+function StartResults(props) {
 
     const { register, handleSubmit } = useForm();
-    const [error, setError] = useState(false);
-    const idSurvey = localStorage.getItem('surveyId');
+    let surveyId = localStorage.getItem('surveyId');
 
     function onSubmit(data) {
-        console.log('done');
+        props.started(data.surveyID);
     }
 
     return (
@@ -21,11 +21,11 @@ function CreateSurvey() {
                                              name="surveyID"
                                              className="form-control question mx-auto mb-1"
                                              placeholder={message}
-                                             value={idSurvey? idSurvey: undefined}
+                                             defaultValue={surveyId? surveyId: undefined}
                                              ref={register({required: true})}
                         />}
                     </FormattedMessage>
-                    {error?<p className="error">
+                    {props.error?<p className="error">
                         <FormattedMessage
                             id = "app.participant.error"
                             defaultMessage="No such survey!"
@@ -43,4 +43,10 @@ function CreateSurvey() {
         </div>
     )
 }
-export default CreateSurvey;
+
+StartResults.propTypes = {
+    started: PropTypes.func,
+    error: PropTypes.bool
+};
+
+export default StartResults;
