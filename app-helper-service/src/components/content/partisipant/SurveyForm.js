@@ -125,9 +125,10 @@ function SurveyForm(props) {
             if(data[val] === '' || data[val].length === 0) return;
         }
         db.collection("answers").doc(userForm.questionID).set({
-            userName: userForm.userName,
-            answers: data
-            })
+            // userName: userForm.userName,
+            // answers: data
+            [userForm.userName]: data
+            }, {merge: true})
             .then(function() {
                 console.log("Document successfully written!");
             })

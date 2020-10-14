@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import db from '../firebase';
 
-// https://www.youtube.com/watch?v=7xf0Kz6WGu8
 // https://www.youtube.com/watch?v=rSgbYCdc4G0
 // https://www.youtube.com/watch?v=3ZEz-iposj8
 

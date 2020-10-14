@@ -1,6 +1,5 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
-import PropTypes from 'prop-types';
 import sem from '../../../core/source/ansem.jpeg';
 
 function Finish() {
