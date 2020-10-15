@@ -138,7 +138,6 @@ function SurveyForm(props) {
         setUserForm(false);
         localStorage.clear('surveyData');
         localStorage.clear('started');
-
     }
 
     return (

@@ -36,13 +36,28 @@ function CreateSurvey() {
         localStorage.setItem('questionsAutosave', JSON.stringify(arr));
     }
 
+    function setResultsDoc(document) {
+
+        //create document for answers
+        db.collection("answers").doc(document).set({
+            title: title
+            })
+            .then(function() {
+                console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+
+    }
+
     function sendForm() {
 
         localStorage.clear('questionsAutosave');
         localStorage.clear('titleAutosave');
         setShow(false); //close popup
-        // let arr = arrQuest.concat([title]); //add survey's title before push in db
 
+        //create survey
         db
             .collection('questions')
             .add({
@@ -50,9 +65,11 @@ function CreateSurvey() {
                 title: title
             })
             .then((docRef) => {
-                setServeyId(docRef.id);
+                let docId = docRef.id;
+                setServeyId(docId);
                 setArrQuest([]);
                 localStorage.setItem('surveyId', docRef.id);
+                setResultsDoc(docId);
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);

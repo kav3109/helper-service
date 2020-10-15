@@ -1,17 +1,18 @@
 import React from 'react';
 import StartResults from "./StartResults";
 import PropTypes from 'prop-types';
-import Charts from "./Charts";
+import ChartResults from "./ChartResults";
+import TableResults from "./TableResults";
 
 function FinalResults(props) {
 
     console.log(props.dataResults);
 
     return (
-        <div className="content card w-50">
+        <div className="card w-75 m-auto">
             <div className="card-body">
-                <h1>Final results</h1>
-                <Charts />
+                <TableResults />
+                <ChartResults />
             </div>
         </div>
     )

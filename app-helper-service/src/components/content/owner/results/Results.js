@@ -5,7 +5,7 @@ import FinalResults from "./FinalResults";
 
 function Results() {
 
-    const [started, setStarted] = useState(true);//TODO change to false after testing
+    const [started, setStarted] = useState(false);
     const [dataResults, setDataResults] = useState();
     const [error, setError] = useState(false);
 
