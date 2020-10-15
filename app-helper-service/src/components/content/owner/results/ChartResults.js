@@ -1,5 +1,5 @@
 import React from 'react';
-import { Line, Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 function ChartResults(props) {
 
@@ -21,6 +21,11 @@ function ChartResults(props) {
                     label: "Music",
                     backgroundColor: "rgba(0, 255, 0, 0.75)",
                     data: [14,15,21,0,12,4,2]
+                },
+                {
+                    label: "Game",
+                    backgroundColor: "rgba(110, 255, 110, 0.75)",
+                    data: [15,15,2,20,16,4,12]
                 }
             ]
         }
@@ -37,7 +42,7 @@ function ChartResults(props) {
     const getChartData = canvas => {
         const data = state.data;
         if(data.datasets) {
-            let colors = ["rgba(255, 0, 255, 0.75)", "rgba(0, 255, 0, 0.75)"];
+            let colors = ["rgba(255, 0, 255, 0.75)", "rgba(0, 255, 0, 0.75)", "rgba(110, 255, 110, 0.75)"];
             data.datasets.forEach((set, i) => {
                 set.backgroundColor = setGradientColor(canvas, colors[i]);
                 set.borderColor = "white";

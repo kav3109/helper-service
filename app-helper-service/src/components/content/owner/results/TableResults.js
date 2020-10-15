@@ -1,15 +1,20 @@
 import React from 'react';
 import StartResults from "./StartResults";
 import PropTypes from 'prop-types';
-import ChartResults from "./ChartResults";
 import './results.scss';
 
+
+
 function TableResults(props) {
+    
+    console.log(props.colors);
+    console.log(props.questions);
+    console.log(props.options);
 
     return (
         <div className="tableWrapper">
             <table className="table">
-                <caption>Выборы</caption>
+                <caption>{props.title}</caption>
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -57,7 +62,10 @@ function TableResults(props) {
 }
 
 StartResults.propTypes = {
-    dataResults: PropTypes.array
+    colors: PropTypes.arrayOf(PropTypes.string),
+    options: PropTypes.arrayOf(PropTypes.string),
+    questions: PropTypes.arrayOf(PropTypes.string),
+    title: PropTypes.string
 };
 
 export default TableResults;

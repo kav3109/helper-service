@@ -6,17 +6,18 @@ import FinalResults from "./FinalResults";
 function Results() {
 
     const [started, setStarted] = useState(false);
-    const [dataResults, setDataResults] = useState();
+    const [dataAnswers, setDataAnswers] = useState();
+    const [dataQuestions, setDataQuestions] = useState();
     const [error, setError] = useState(false);
 
-    function prepareSurveyData(questionID) {
+    function prepareAnswersData(questionID) {
 
         const docRef = db.collection('answers').doc(questionID);
 
         docRef.get().then(function(doc) {
             if (doc.exists) {
                 let results = doc.data();
-                setDataResults(results);
+                setDataAnswers(results);
                 setError(false);
                 setStarted(true);
             } else {
@@ -28,14 +29,32 @@ function Results() {
         });
     }
 
+    function prepareQuestionsData(questionID) {
+
+        const docRef = db.collection('questions').doc(questionID);
+
+        docRef.get().then(function(doc) {
+            if (doc.exists) {
+                let results = doc.data();
+                setDataQuestions(results);
+            } else {
+                setError(true);
+                console.log("No such document!");
+            }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+    }
+
     function handleStart(id) {
-        prepareSurveyData(id.trim())
+        prepareQuestionsData(id.trim());
+        prepareAnswersData(id.trim());
     }
 
     return (
         <>
             {!started?<StartResults started={handleStart} error={error}/>:null}
-            {started?<FinalResults dataResults={dataResults} />:null}
+            {started?<FinalResults dataAnswers={dataAnswers}  dataQuestions={dataQuestions}/>:null}
         </>
     )
 }
