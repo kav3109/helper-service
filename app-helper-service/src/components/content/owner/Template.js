@@ -113,7 +113,10 @@ function Template() {
             } else if(count === 1) {
                 obj.quest = data[key];
             } else {
-                obj.options.push(data[key]);
+                obj.options.push({
+                    val: data[key],
+                    count: 0
+                });
             }
             count++;
         }

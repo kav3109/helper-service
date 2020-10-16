@@ -45,9 +45,9 @@ function OptionList(props) {
         <>
             {props.options.map((inp, ind) => {
                 if(props.type === 'radio') {
-                    return <RadioItem key={ind+inp} val={inp} name={props.name} register={props.register} />
+                    return <RadioItem key={ind+inp.val} val={inp.val} name={props.name} register={props.register} />
                 } else {
-                    return <CheckboxItem key={ind+inp} val={inp} name={props.name} register={props.register} />
+                    return <CheckboxItem key={ind+inp.val} val={inp.val} name={props.name} register={props.register} />
                 }
             })}
         </>
@@ -55,7 +55,7 @@ function OptionList(props) {
 }
 
 OptionList.propTypes = {
-    options: PropTypes.arrayOf(PropTypes.string),
+    options: PropTypes.arrayOf(PropTypes.object),
     type: PropTypes.string,
     name: PropTypes.string
 };
