@@ -124,10 +124,12 @@ function SurveyForm(props) {
         for(let val in data) {
             if(data[val] === '' || data[val].length === 0) return;
         }
+        let id = Math.random().toString(36).slice(2, 2 + Math.max(1, Math.min(1234, 4)));
         db.collection("answers").doc(userForm.questionID).set({
-            // userName: userForm.userName,
-            // answers: data
-            [userForm.userName]: data
+            [id]: {
+                userName: userForm.userName,
+                answers: data
+                }
             }, {merge: true})
             .then(function() {
                 console.log("Document successfully written!");
