@@ -6,12 +6,8 @@ import TableResults from "./TableResults";
 
 function FinalResults(props) {
 
-    const [results, setResults] = useState();
+    let results;
     const colors = setArrOfColors();
-    const questions = getQuestions();
-    const options = getOptions();
-    console.log('dataAnswers',props.dataAnswers);//TODO delete
-    console.log('dataQuestions',props.dataQuestions);//TODO delete
 
     function getMaxCountOfColors(data) {
         let countOfColors = 1;
@@ -37,30 +33,36 @@ function FinalResults(props) {
         return arrColors;
     }
 
-    function getQuestions() {
-        let arr = Object.values(props.dataQuestions.questions),
-            arrQuestion = [];
-        arr.forEach((val) => {
-            arrQuestion.push(val.quest);
-        });
-        return arrQuestion;
+    function countResults() {
+        let dq = props.dataQuestions.questions;
+        for(let key in dq) {
+            let opt = dq[key].options;
+            for(let key2 in opt) {
+                opt[key2].count = getAnswers(dq[key].quest, opt[key2].val, opt[key2].count);
+            }
+        }
+        return dq;
     }
 
-    function getOptions() {
-        let arr = Object.values(props.dataQuestions.questions),
-            arrOptions = [];
-        arr.forEach((val) => {
-            arrOptions.push(Object.values(val.options));
-        });
-        return arrOptions;
+    function getAnswers(question, option, counter) {
+        let da = props.dataAnswers;
+        for(let key in da) {
+            if(typeof da[key] === 'object') {
+                let ans = da[key].answers[question];
+                if(typeof ans === 'object' && ans.indexOf(option) >= 0) counter +=1;
+                if(typeof ans === 'string' && option === ans) counter +=1;
+            }
+        }
+        return counter;
     }
+
+    results = countResults();
 
     return (
         <div className="card w-75 m-auto">
             <div className="card-body">
                 <TableResults colors={colors}
-                              questions={questions}
-                              options={options}
+                              results={results}
                               title={props.dataQuestions.title}/>
                 <ChartResults colors={colors} />
             </div>

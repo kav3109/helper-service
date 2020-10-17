@@ -8,8 +8,7 @@ import './results.scss';
 function TableResults(props) {
     
     console.log(props.colors);
-    console.log(props.questions);
-    console.log(props.options);
+    console.log(props.results);
 
     return (
         <div className="tableWrapper">
@@ -63,8 +62,7 @@ function TableResults(props) {
 
 StartResults.propTypes = {
     colors: PropTypes.arrayOf(PropTypes.string),
-    options: PropTypes.arrayOf(PropTypes.string),
-    questions: PropTypes.arrayOf(PropTypes.string),
+    results: PropTypes.arrayOf(PropTypes.object),
     title: PropTypes.string
 };
 
