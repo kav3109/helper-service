@@ -25,6 +25,9 @@
   "app.participant.error": "Нет опроса с таким идентификанором",
   "app.participant.send": "Отправить",
   "app.participant.finish.sent": "Форма отправлена",
-  "app.participant.finish.phrase": "Вы сделали это!"
+  "app.participant.finish.phrase": "Вы сделали это!",
+  "app.participant.results.table.questions": "Вопросы",
+  "app.participant.results.table.options": "Варианты",
+  "app.participant.results.table.counts": "Количество"
 
 }

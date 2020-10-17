@@ -132,7 +132,7 @@ function SurveyForm(props) {
                 }
             }, {merge: true})
             .then(function() {
-                console.log(data);
+                console.log('Form was sent');
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);

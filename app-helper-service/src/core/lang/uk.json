@@ -25,5 +25,8 @@
   "app.participant.error": "Опитування з таким ідентифікатором не існує",
   "app.participant.send": "Відправити",
   "app.participant.finish.sent": "Форма відправлена",
-  "app.participant.finish.phrase": "Ви зробили це!"
+  "app.participant.finish.phrase": "Ви зробили це!",
+  "app.participant.results.table.questions": "Питання",
+  "app.participant.results.table.options": "Варіанти",
+  "app.participant.results.table.counts": "Кількість"
 }

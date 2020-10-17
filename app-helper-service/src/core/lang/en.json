@@ -25,5 +25,8 @@
   "app.participant.error": "No survey with such ID",
   "app.participant.send": "Send",
   "app.participant.finish.sent": "Form was sent",
-  "app.participant.finish.phrase": "You did it!"
+  "app.participant.finish.phrase": "You did it!",
+  "app.participant.results.table.questions": "Questions",
+  "app.participant.results.table.options": "Options",
+  "app.participant.results.table.counts": "Counts"
 }

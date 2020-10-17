@@ -1,48 +1,61 @@
 import React from 'react';
-import { Line } from 'react-chartjs-2';
+import { Line, Bar } from 'react-chartjs-2';
+import PropTypes from 'prop-types';
 
 function ChartResults(props) {
 
+    console.log(props.colors);
+    console.log(props.results);
+
+    function setLabels() {
+        let labels = [];
+        for(let i = 1; i <= props.results.length; i++) {
+            labels.push('#'+i.toString())
+        }
+        return labels;
+    }
+
+    // function setData() {
+    //     let data = [];
+    //     props.results.forEach((val, id) => {
+    //         data.push({
+    //             backgroundColor:
+    //         })
+    //     })
+    // }
+
     const state = {
         data: {
-            labels:[
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"],
+            labels: setLabels(),
             datasets: [
                 {
-                    label: "Video",
-                    backgroundColor: "rgba(255, 0, 255, 0.75)",
-                    data: [4,5,1,10,32,2,12]
+                    backgroundColor: "rgba(255,255,0, 0.75)",
+                    data: [2,0,1],
                 },
                 {
-                    label: "Music",
-                    backgroundColor: "rgba(0, 255, 0, 0.75)",
-                    data: [14,15,21,0,12,4,2]
+                    backgroundColor: "rgba(0,255,255, 0.75)",
+                    data: [1,1,2],
                 },
                 {
-                    label: "Game",
-                    backgroundColor: "rgba(110, 255, 110, 0.75)",
-                    data: [15,15,2,20,16,4,12]
-                }
+                    backgroundColor: "rgba(255,0,0, 0.75)",
+                    data: [0,2,2],
+                },
             ]
-        }
+        },
     };
 
     const setGradientColor = (canvas, color) => {
         const ctx = canvas.getContext('2d');
         const gradient = ctx.createLinearGradient(0,0,600,500);
         gradient.addColorStop(0, color);
-        gradient.addColorStop(0.95, "rgba(133,122,144, 0.5)");
+        gradient.addColorStop(0.95, "rgba(133,122,144, 0.2)");
         return gradient;
     };
 
     const getChartData = canvas => {
         const data = state.data;
         if(data.datasets) {
-            let colors = ["rgba(255, 0, 255, 0.75)", "rgba(0, 255, 0, 0.75)", "rgba(110, 255, 110, 0.75)"];
+            let colors = props.colors;
             data.datasets.forEach((set, i) => {
                 set.backgroundColor = setGradientColor(canvas, colors[i]);
                 set.borderColor = "white";
@@ -53,18 +66,24 @@ function ChartResults(props) {
     };
 
     return (
-        <div style={{position: "relative", width: 600, height: 350, margin: "auto"}}>
-            <h3>Chart example</h3>
-            <Line
+        <div className="chartLine">
+            <h3 className="text-center">{props.title}</h3>
+            <Bar
                 options={{
-                    responsive: true
+                    responsive: true,
+                    legend: { display: false }
                 }}
-                // data={state.data}
                 data={getChartData}
             />
         </div>
     )
 
 }
+
+ChartResults.propTypes = {
+    colors: PropTypes.arrayOf(PropTypes.string),
+    results: PropTypes.arrayOf(PropTypes.object),
+    title: PropTypes.string
+};
 
 export default ChartResults;

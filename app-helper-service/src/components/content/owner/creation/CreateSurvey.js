@@ -3,9 +3,9 @@ import './owner.scss';
 import Template from './Template';
 import SurveyView from './SurveyView';
 import { FormattedMessage } from 'react-intl';
-import CreationPopup from '../popup/CreationPopup';
+import CreationPopup from '../../popup/CreationPopup';
 import SurveyId from './SurveyId';
-import db from '../../../firebase';
+import db from '../../../../firebase';
 
 export const SurveyContext = React.createContext();
 

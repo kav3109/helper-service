@@ -2,10 +2,10 @@ import React from 'react';
 import './App.scss';
 import Header from "./components/Header";
 import Main from "./components/content/Main";
-import Owner from "./components/content/owner/Owner";
+import Owner from "./components/content/owner/creation/Owner";
 import Participant from "./components/content/partisipant/Participant";
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import CreateSurvey from "./components/content/owner/CreateSurvey";
+import CreateSurvey from "./components/content/owner/creation/CreateSurvey";
 import Results from "./components/content/owner/results/Results";
 
 function App() {

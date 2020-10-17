@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import StartResults from "./StartResults";
 import PropTypes from 'prop-types';
 import ChartResults from "./ChartResults";
 import TableResults from "./TableResults";
+import {COLORS} from "../../../../core/source/constants"
 
 function FinalResults(props) {
 
@@ -21,16 +22,20 @@ function FinalResults(props) {
     function getRandomRGBColor() {
         return 'rgb(' + Math.floor(Math.random() * 256) + ',' +
             Math.floor(Math.random() * 256) + ',' +
-            Math.floor(Math.random() * 256) + ',' + '0.75)'
+            Math.floor(Math.random() * 256) + ',0.75)'
     }
 
     function setArrOfColors() {
         let counter = getMaxCountOfColors(props.dataQuestions.questions);
-        let arrColors = [];
-        for(let i = 0; i < counter; i++) {
-            arrColors.push(getRandomRGBColor());
+        let arrColors = COLORS;
+        if(counter > COLORS.length){
+            for(let i = COLORS.length; i < counter; i++) {
+                arrColors.push(getRandomRGBColor());
+            }
+            return arrColors;
+        }else {
+            return arrColors = COLORS.slice(0,counter);
         }
-        return arrColors;
     }
 
     function countResults() {
@@ -64,7 +69,9 @@ function FinalResults(props) {
                 <TableResults colors={colors}
                               results={results}
                               title={props.dataQuestions.title}/>
-                <ChartResults colors={colors} />
+                <ChartResults colors={colors}
+                              results={results}
+                              title={props.dataQuestions.title}/>
             </div>
         </div>
     )
