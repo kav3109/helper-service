@@ -1,3 +1,9 @@
+.results {
+  min-width: 650px;
+  max-width: 90vw;
+  margin: auto;
+}
+
 .colorOption {
   display: inline-block;
   width: 30px;
@@ -8,8 +14,29 @@
 }
 
 .chartLine {
-  position: relative;
   width: 600px;
   height: 350px;
   margin: auto;
+}
+
+.start {
+  width: 20%;
+}
+
+.resultWrap {
+  width: 95%;
+  margin: auto;
+  overflow: auto;
+}
+
+@media only screen and (max-width: 800px) {
+  .start {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .start {
+    width: 95%;
+  }
 }

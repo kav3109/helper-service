@@ -13,7 +13,7 @@ function StartResults(props) {
     }
 
     return (
-        <div className="content card w-50">
+        <div className="content card start">
             <div className="card-body">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <FormattedMessage id="app.participant.surveyId" defaultMessage="Survey ID">

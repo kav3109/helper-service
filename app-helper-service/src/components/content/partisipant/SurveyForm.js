@@ -149,7 +149,7 @@ function SurveyForm(props) {
                     <h3 className="my-2 mx-1">{userForm.title}</h3>
                     {userForm?<QuestionList list={userForm.questions} register={register} />:null}
                     {userForm?<FormattedMessage id="app.participant.send" defaultMessage="SEND">
-                        {(message) => <button type="submit" className="btn btn-primary mt-2">{message}</button>}
+                        {(message) => <button type="submit" className="btn btn-primary m-2">{message}</button>}
                     </FormattedMessage>:null}
                     {!userForm?<Finish />:null}
                 </form>

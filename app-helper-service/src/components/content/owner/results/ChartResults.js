@@ -1,11 +1,8 @@
 import React from 'react';
-import { Line, Bar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import PropTypes from 'prop-types';
 
 function ChartResults(props) {
-
-    console.log(props.colors);
-    console.log(props.results);
 
     function setLabels() {
         let labels = [];
@@ -15,32 +12,31 @@ function ChartResults(props) {
         return labels;
     }
 
-    // function setData() {
-    //     let data = [];
-    //     props.results.forEach((val, id) => {
-    //         data.push({
-    //             backgroundColor:
-    //         })
-    //     })
-    // }
+    function setChartData() {
+        let arr = [];
+        props.colors.forEach((item, ind) => {
+            arr.push({
+                backgroundColor: item,
+                data: setCounts(ind)
+            })
+        });
+        return arr;
+    }
+
+    function setCounts(ind) {
+        let arr = [];
+        let count;
+        for(let i = 0; i < props.results.length; i++) {
+            count = (ind >= Object.keys(props.results[i].options).length)? 0 : props.results[i].options[ind].count;
+            arr.push(count);
+        }
+        return arr;
+    }
 
     const state = {
         data: {
             labels: setLabels(),
-            datasets: [
-                {
-                    backgroundColor: "rgba(255,255,0, 0.75)",
-                    data: [2,0,1],
-                },
-                {
-                    backgroundColor: "rgba(0,255,255, 0.75)",
-                    data: [1,1,2],
-                },
-                {
-                    backgroundColor: "rgba(255,0,0, 0.75)",
-                    data: [0,2,2],
-                },
-            ]
+            datasets: setChartData()
         },
     };
 
@@ -48,7 +44,7 @@ function ChartResults(props) {
         const ctx = canvas.getContext('2d');
         const gradient = ctx.createLinearGradient(0,0,600,500);
         gradient.addColorStop(0, color);
-        gradient.addColorStop(0.95, "rgba(133,122,144, 0.2)");
+        // gradient.addColorStop(0.95, "rgba(94,94,94, 0.2)");
         return gradient;
     };
 
@@ -71,7 +67,15 @@ function ChartResults(props) {
             <Bar
                 options={{
                     responsive: true,
-                    legend: { display: false }
+                    legend: { display: false },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                callback: function(value) {if (value % 1 === 0) {return value;}}
+                            }
+                        }]
+                    }
                 }}
                 data={getChartData}
             />

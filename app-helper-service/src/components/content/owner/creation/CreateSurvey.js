@@ -36,6 +36,14 @@ function CreateSurvey() {
         localStorage.setItem('questionsAutosave', JSON.stringify(arr));
     }
 
+    function deleteQuestion(ind) {
+        console.log('deleted', ind);
+        arrQuest.splice(ind, 1);
+        setArrQuest(arrQuest);
+        console.log(arrQuest);
+        localStorage.setItem('questionsAutosave', JSON.stringify(arrQuest));
+    }
+
     function setResultsDoc(document) {
 
         //create document for answers
@@ -77,7 +85,7 @@ function CreateSurvey() {
     }
     return (
         <>
-            <SurveyContext.Provider value={{addQuestion}}>
+            <SurveyContext.Provider value={{addQuestion , deleteQuestion}}>
                 <div className="creater card">
                     <div className="card-body">
                         <h4>

@@ -32,10 +32,10 @@ function FinalResults(props) {
             for(let i = COLORS.length; i < counter; i++) {
                 arrColors.push(getRandomRGBColor());
             }
-            return arrColors;
         }else {
-            return arrColors = COLORS.slice(0,counter);
+            arrColors = COLORS.slice(0,counter);
         }
+        return arrColors;
     }
 
     function countResults() {
@@ -64,8 +64,8 @@ function FinalResults(props) {
     results = countResults();
 
     return (
-        <div className="card w-75 m-auto">
-            <div className="card-body">
+        <div className="card resultWrap">
+            <div className="card-body results">
                 <TableResults colors={colors}
                               results={results}
                               title={props.dataQuestions.title}/>
