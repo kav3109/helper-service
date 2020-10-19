@@ -38,9 +38,9 @@ function CreateSurvey() {
 
     function deleteQuestion(ind) {
         console.log('deleted', ind);
-        arrQuest.splice(ind, 1);
-        setArrQuest(arrQuest);
-        console.log(arrQuest);
+        let newArr = arrQuest.concat([]);
+        newArr.splice(ind, 1);
+        setArrQuest(newArr);
         localStorage.setItem('questionsAutosave', JSON.stringify(arrQuest));
     }
 
